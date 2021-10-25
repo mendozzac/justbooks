@@ -12,7 +12,7 @@ Páginas:
 
 - Formulario
 
-Componentes
+Componentes:
 
 - Comunes a todas las páginas:
   Header
