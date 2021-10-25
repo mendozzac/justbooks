@@ -8,6 +8,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import Navigation from "./components/Navigation/Navigation";
+import MyCart from "./pages/MyCart/MyCart";
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
             <Switch>
               <Route path="/DetailPage" exact>
                 <DetailPage />
+              </Route>
+              <Route path="/MyCart" exact>
+                <MyCart />
               </Route>
             </Switch>
             <BookCard />

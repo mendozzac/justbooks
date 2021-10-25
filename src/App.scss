@@ -17,7 +17,6 @@ body {
   flex-wrap: wrap;
 }
 
-
 header {
   background-color: $primary;
   height: 130px;
@@ -53,11 +52,11 @@ header .container {
   justify-content: center;
   width: 100%;
   position: relative;
+  margin-bottom: 15px;
   input {
     width: 100%;
     border-radius: 30px;
     border: none;
-    margin-bottom: 10px;
   }
   .searchButton {
     position: absolute;
