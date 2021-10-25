@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import "./App.css";
+=======
+import "./App.scss";
+>>>>>>> c1d6640ab7316b63bb61110e6a7389f148b51417
 import Footer from "./components/Footer/Footer.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import BookCard from "./components/BookCard/BookCard";
 
 function App() {
   return (
