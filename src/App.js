@@ -7,7 +7,7 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
-
+import MyCart from "./pages/MyCart/MyCart";
 
 function App() {
   return (
@@ -35,9 +35,12 @@ function App() {
         <main className="main-content">
           <div className="container main-container">
             <Switch>
-                <Route path="/DetailPage" exact>
-                    <DetailPage />
-                </Route>
+              <Route path="/DetailPage" exact>
+                <DetailPage />
+              </Route>
+              <Route path="/MyCart" exact>
+                <MyCart />
+              </Route>
             </Switch>
           </div>
         </main>
