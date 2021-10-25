@@ -1,0 +1,13 @@
+.card {
+  width: 140px;
+  height: 284px;
+  margin-bottom: 50px;
+  border-style: none;
+  &__info {
+    padding-bottom: 0;
+    font-size: 0.8em;
+    &--title {
+      font-weight: 800;
+    }
+  }
+}
