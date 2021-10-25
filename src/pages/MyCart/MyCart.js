@@ -6,8 +6,8 @@ const MyCart = () => {
           className="cart-card__img"
           src="http://books.google.com/books/content?id=PP6SDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
           alt="loacting the voice in the film"
-          width="100"
-          height="150"
+          width="150"
+          height="200"
         ></img>
         <div className="cart-card__details">
           <div className="cart-card__data">
@@ -32,6 +32,13 @@ const MyCart = () => {
             <button className="remove-button">Remove</button>
           </div>
         </div>
+      </div>
+      <div className="checkout">
+        <div className="total">
+          <span className="totalLabel">Total</span>
+          <span className="totalAmount">0.00€</span>
+        </div>
+        <button className="checkout">Checkout</button>
       </div>
     </>
   );
