@@ -1,7 +1,8 @@
 import "./App.scss";
 import Footer from "./components/Footer/Footer.js";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import BookCard from "./components/BookCard/BookCard";
+import DetailPage from "./pages/DetailPage/DetailPage";
 
 function App() {
   return (
@@ -11,7 +12,13 @@ function App() {
           <div className="container header-container"></div>
         </header>
         <main className="main-content">
-          <div className="container main-container"></div>
+          <div className="container main-container">
+            <Switch>
+                <Route path="/DetailPage" exact>
+                    <DetailPage />
+                </Route>
+            </Switch>
+          </div>
         </main>
         <footer className="footer">
           <div className="container footer-container">
