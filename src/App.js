@@ -1,5 +1,4 @@
-
-import "./App.css";
+import "./App.scss";
 import Footer from "./components/Footer/Footer.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import BookCard from "./components/BookCard/BookCard";
@@ -21,7 +20,6 @@ function App() {
         </footer>
       </Router>
     </>
-
   );
 }
 
