@@ -8,7 +8,6 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 
-
 function App() {
   return (
     <>
@@ -35,9 +34,9 @@ function App() {
         <main className="main-content">
           <div className="container main-container">
             <Switch>
-                <Route path="/DetailPage" exact>
-                    <DetailPage />
-                </Route>
+              <Route path="/DetailPage" exact>
+                <DetailPage />
+              </Route>
             </Switch>
           </div>
         </main>
