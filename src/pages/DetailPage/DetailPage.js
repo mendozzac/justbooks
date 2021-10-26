@@ -8,11 +8,6 @@ const DetailPage = () => {
 
   const bookId = params.id;
 
-  // const { book, loadBook } = useBook(`/${bookId}`);
-  // useEffect(() => {
-  //   loadBook();
-  // }, [loadBook]);
-
   const [book, setBook] = useState(null);
 
   const getBook = useCallback(async () => {
@@ -25,8 +20,6 @@ const DetailPage = () => {
   useEffect(() => {
     getBook();
   }, [getBook]);
-
-  console.log(book);
 
   return (
     book && (
@@ -46,8 +39,8 @@ const DetailPage = () => {
         <Button text="Add to Cart" />
         <div className="description">{book.volumeInfo.description}</div>
         <ul className="product-details">
-          <li> Pages: </li>
-          <li> Publisher </li>
+          <li> Pages: {book.volumeInfo.pageCount}</li>
+          <li> Publisher: {book.volumeInfo.publisher} </li>
         </ul>
       </div>
     )
