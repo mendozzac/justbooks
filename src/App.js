@@ -14,6 +14,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import MyCart from "./pages/MyCart/MyCart";
 import SideBar from "./components/SideBar/SideBar";
+import FormPage from "./pages/FormPage/FormPage";
 
 function App() {
   return (
@@ -54,8 +55,8 @@ function App() {
               <Route path="/MyBooks" exact>
                 <MyCart />
               </Route>
-              <Route path="/Form" exact>
-                <MyCart />
+              <Route path="/FormPage" exact>
+                <FormPage />
               </Route>
             </Switch>
           </Router>
