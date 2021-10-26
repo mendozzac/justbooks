@@ -1,4 +1,4 @@
-import actionTypes from "./actionTypes";
+import actionTypes from "../../actions/actionTypes";
 
 const booksReducer = (books, action) => {
   let newBooks;

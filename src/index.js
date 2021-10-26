@@ -5,10 +5,13 @@ import "@fontsource/montserrat";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import BooksContextProvider from "./store/contexts/BooksContextProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BooksContextProvider>
+      <App />
+    </BooksContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
