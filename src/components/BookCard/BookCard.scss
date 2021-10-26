@@ -3,11 +3,12 @@
   height: 284px;
   margin-bottom: 50px;
   border-style: none;
-  &__info {
+  &__content {
     padding-bottom: 0;
     font-size: 0.8em;
-    &--title {
-      font-weight: 800;
-    }
+  }
+  &__title {
+    font-size: 14px;
+    font-weight: 800;
   }
 }
