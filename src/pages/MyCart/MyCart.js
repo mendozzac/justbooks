@@ -1,3 +1,5 @@
+import Button from "../../components/Button/Button";
+
 const MyCart = () => {
   return (
     <>
@@ -29,7 +31,7 @@ const MyCart = () => {
               <option value={9}>9</option>
               <option value={10}>10</option>
             </select>
-            <button className="remove-button">Remove</button>
+            <Button text="Remove" />
           </div>
         </div>
       </div>
@@ -38,7 +40,7 @@ const MyCart = () => {
           <span className="totalLabel">Total</span>
           <span className="totalAmount">0.00€</span>
         </div>
-        <button className="checkout">Checkout</button>
+        <Button text="Checkout" />
       </div>
     </>
   );

@@ -6,7 +6,7 @@ const MyBooks = () => {
     <>
       <h2>My Books</h2>
       <NavLink to="/form" activeClassName="current-section" exact>
-        <Button />
+        <Button text="+" />
       </NavLink>
     </>
   );

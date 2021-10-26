@@ -1,4 +1,5 @@
 import "./DetailPage.scss";
+import Button from "../../components/Button/Button";
 
 const DetailPage = () => {
   return (
@@ -15,7 +16,7 @@ const DetailPage = () => {
         <p className="card-author"> Author </p>
         <p className="price"> Price </p>
       </div>
-      <button className="add-to-cart"> Add to Cart</button>
+      <Button text="Add to Cart" />
       <p className="description">
         {" "}
         "Where is the place of the voice in film? Where others have focused on
