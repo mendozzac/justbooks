@@ -7,7 +7,9 @@ const booksReducer = (books, action) => {
     case actionTypes.loadBooks:
       newBooks = [...action.books.items];
       break;
+
     default:
+      newBooks = books;
   }
   return newBooks;
 };
