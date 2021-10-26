@@ -5,6 +5,7 @@ import {
   Route,
   Switch,
   Redirect,
+  NavLink,
 } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -20,33 +21,39 @@ import FormPage from "./pages/FormPage/FormPage";
 import Homepage from "./pages/Homepage/Homepage";
 import MyBooks from "./pages/MyBooks/MyBooks";
 
-
 function App() {
   return (
     <>
-      <SideBar />
-      <header className="header">
-        <div className="container header-container">
-          <div className="topLinks">
-            <nav className="header__burger">
-              <FontAwesomeIcon icon={faBars} />
-            </nav>
-            <h1 className="logo">JustBooks</h1>
-            <div className="cartButton">
-              <FontAwesomeIcon icon={faShoppingCart} />
+      <Router>
+        <SideBar />
+        <header className="header">
+          <div className="container header-container">
+            <div className="topLinks">
+              <nav className="header__burger">
+                <FontAwesomeIcon icon={faBars} />
+              </nav>
+              <NavLink to="/home" activeClassName="current-section" exact>
+                <h1 className="logo">JustBooks</h1>
+              </NavLink>
+              <NavLink
+                to="/cart"
+                activeClassName="current-section"
+                exact
+                className="cartButton"
+              >
+                <FontAwesomeIcon icon={faShoppingCart} />
+              </NavLink>
+            </div>
+            <div className="searchBar">
+              <input type="text" />
+              <div className="searchButton">
+                <FontAwesomeIcon icon={faSearch} />
+              </div>
             </div>
           </div>
-          <div className="searchBar">
-            <input type="text" />
-            <div className="searchButton">
-              <FontAwesomeIcon icon={faSearch} />
-            </div>
-          </div>
-        </div>
-      </header>
-      <main className="main-content">
-        <div className="container main-container">
-          <Router>
+        </header>
+        <main className="main-content">
+          <div className="container main-container">
             <Switch>
               <Route path="/" exact>
                 <Redirect to="/home" />
@@ -68,15 +75,14 @@ function App() {
               </Route>
             </Switch>
             <Navigation />
-          </Router>
-        </div>
-      </main>
-      <footer className="footer">
-        <div className="container footer-container">
-          <Footer />
-        </div>
-      </footer>
-
+          </div>
+        </main>
+        <footer className="footer">
+          <div className="container footer-container">
+            <Footer />
+          </div>
+        </footer>
+      </Router>
     </>
   );
 }
