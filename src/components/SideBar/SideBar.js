@@ -1,8 +1,12 @@
+import { NavLink } from "react-router-dom";
+
 const SideBar = () => {
   return (
     <>
       <div className="sidebar">
-        <div className="mybooks-link">My Books</div>
+        <NavLink to="/mybooks" activeClassName="current-section" exact>
+          <div className="mybooks-link">My Books</div>
+        </NavLink>
         <div className="mybooks-link">Categories</div>
         <ul className="sidebar__categories">
           <li>Art</li>
