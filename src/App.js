@@ -15,6 +15,7 @@ import DetailPage from "./pages/DetailPage/DetailPage";
 import MyCart from "./pages/MyCart/MyCart";
 import SideBar from "./components/SideBar/SideBar";
 import FormPage from "./pages/FormPage/FormPage";
+import Homepage from "./pages/Homepage/Homepage";
 
 function App() {
   return (
@@ -45,6 +46,9 @@ function App() {
             <Switch>
               <Route path="/" exact>
                 <Redirect to="/home" />
+              </Route>
+              <Route path="/home" exact>
+                <Homepage />
               </Route>
               <Route path="/DetailPage" exact>
                 <DetailPage />
