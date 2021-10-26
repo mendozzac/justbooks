@@ -6,7 +6,6 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import BookCard from "./components/BookCard/BookCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -16,6 +15,7 @@ import MyCart from "./pages/MyCart/MyCart";
 import SideBar from "./components/SideBar/SideBar";
 import FormPage from "./pages/FormPage/FormPage";
 import Homepage from "./pages/Homepage/Homepage";
+import MyBooks from "./pages/MyBooks/MyBooks";
 
 function App() {
   return (
@@ -57,7 +57,7 @@ function App() {
                 <MyCart />
               </Route>
               <Route path="/mybooks" exact>
-                <MyCart />
+                <MyBooks />
               </Route>
               <Route path="/form" exact>
                 <FormPage />
