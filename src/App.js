@@ -1,13 +1,14 @@
 import "./App.scss";
 import Footer from "./components/Footer/Footer.js";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import BookCard from "./components/BookCard/BookCard";
+//import BookCard from "./components/BookCard/BookCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import MyCart from "./pages/MyCart/MyCart";
+import FormPage from "./pages/FormPage/FormPage";
 
 function App() {
   return (
@@ -41,6 +42,10 @@ function App() {
               <Route path="/MyCart" exact>
                 <MyCart />
               </Route>
+              <Route path="/FormPage" exact>
+                <FormPage />
+              </Route>
+
             </Switch>
           </div>
         </main>
