@@ -21,7 +21,7 @@ const generateBooks = () => {
     });
   }
 
-  return { "data": books }
+  return { "items": books }
 }
 
 let dataObj = generateBooks();
