@@ -11,7 +11,7 @@ const Homepage = () => {
     <>
       <h2>Our Picks</h2>
       {books.map((book) => (
-        <BookCard key={book.id} />
+        <BookCard key={book.id} book={book} />
       ))}
     </>
   );
