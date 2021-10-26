@@ -50,16 +50,16 @@ function App() {
               <Route path="/home" exact>
                 <Homepage />
               </Route>
-              <Route path="/DetailPage" exact>
+              <Route path="/detail" exact>
                 <DetailPage />
               </Route>
-              <Route path="/MyCart" exact>
+              <Route path="/cart" exact>
                 <MyCart />
               </Route>
-              <Route path="/MyBooks" exact>
+              <Route path="/mybooks" exact>
                 <MyCart />
               </Route>
-              <Route path="/FormPage" exact>
+              <Route path="/form" exact>
                 <FormPage />
               </Route>
             </Switch>
