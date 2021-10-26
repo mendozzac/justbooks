@@ -7,8 +7,8 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
-import Navigation from "./components/Navigation/Navigation";
 import MyCart from "./pages/MyCart/MyCart";
+import Navigation from "./components/Navigation/Navigation";
 
 function App() {
   return (
@@ -45,6 +45,7 @@ function App() {
             </Switch>
             <BookCard />
           </div>
+          <Navigation />
         </main>
         <footer className="footer">
           <div className="container footer-container">
