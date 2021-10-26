@@ -1,18 +1,21 @@
-import actionTypes from "./actionTypes"
+import actionTypes from "./actionTypes";
 
-export const  loadBooksAction = (books) => ({
+export const loadBooksAction = (books) => ({
   type: actionTypes.loadBooks,
-  books
+  books,
+});
+
+export const loadBookAction = (book) => ({
+  type: actionTypes.loadBook,
+  book,
 });
 
 export const deleteBookAction = (id) => ({
   type: actionTypes.deleteBook,
-  id
-})
+  id,
+});
 
 export const createBook = (book) => ({
   type: actionTypes.createBook,
-  book
-})
-
-
+  book,
+});

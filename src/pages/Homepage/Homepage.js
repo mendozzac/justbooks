@@ -4,10 +4,14 @@ import BookCard from "../../components/BookCard/BookCard";
 import useBooks from "../../hooks/useBooks";
 
 const Homepage = () => {
-  const { books, loadBooks } = useBooks();
+  const ourPicks =
+    "?q=subject:art&printType=books&filter=paid-ebooks&startIndex=0&maxResults=10&langRestrict=en";
+  const { books, loadBooks } = useBooks(ourPicks);
   useEffect(() => {
     loadBooks();
   }, [loadBooks]);
+
+  //loadBooks();
 
   const history = useHistory();
 
