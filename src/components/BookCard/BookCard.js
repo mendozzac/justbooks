@@ -1,21 +1,21 @@
 import { NavLink } from "react-router-dom";
 
-const BookCard = () => {
+const BookCard = ({ book }) => {
   return (
     <div className="card">
       <NavLink to="/detail" activeClassName="current-section" exact>
         <img
           className="card__image"
-          src="http://books.google.com/books/content?id=PP6SDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+          src={book.volumeInfo.imageLinks.thumbnail}
           alt="loacting the voice in the film"
-          width="20"
-          height="70"
+          width="120"
+          height="180"
         ></img>
       </NavLink>
       <div className="card__content">
-        <h3 className="card__title">Title of book</h3>
-        <p className="card__author"> Author </p>
-        <p className="card__price"> Price </p>
+        <h3 className="card__title">{book.volumeInfo.title}</h3>
+        <p className="card__author"> {book.volumeInfo.authors.join(", ")} </p>
+        <p className="card__price"> {book.saleInfo.listPrice.amount + "€"} </p>
       </div>
     </div>
   );
