@@ -3,12 +3,12 @@ const Navigation = () => {
     <nav aria-label="...">
       <ul className="pagination pagination-lg">
         <li className="page-item ">
-          <link className="page-link" src="1">
+          <link className="page-link" href="1">
             1
           </link>
         </li>
         <li className="page-item">
-          <link className="page-link" src="2">
+          <link className="page-link" href="2">
             2
           </link>
         </li>

@@ -45,7 +45,6 @@ function App() {
             </Switch>
             <BookCard />
           </div>
-          <Navigation />
         </main>
         <footer className="footer">
           <div className="container footer-container">
