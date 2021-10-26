@@ -5,7 +5,7 @@ const booksReducer = (books, action) => {
 
   switch (action.type) {
     case actionTypes.loadBooks:
-      newBooks = [...action.books];
+      newBooks = [...action.books.items];
       break;
     default:
   }
