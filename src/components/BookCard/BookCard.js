@@ -1,21 +1,19 @@
-import { NavLink } from "react-router-dom";
+import "./BookCard.scss";
 
-const BookCard = () => {
+const BookCard = ({ book, actionOnClick }) => {
   return (
-    <div className="card">
-      <NavLink to="/detail" activeClassName="current-section" exact>
-        <img
-          className="card__image"
-          src="http://books.google.com/books/content?id=PP6SDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
-          alt="loacting the voice in the film"
-          width="20"
-          height="70"
-        ></img>
-      </NavLink>
+    <div className="card" onClick={actionOnClick}>
+      <img
+        className="card__image"
+        src={book.volumeInfo.imageLinks.thumbnail}
+        alt={book.volumeInfo.title}
+        width="150"
+        height="210"
+      ></img>
       <div className="card__content">
-        <h3 className="card__title">Title of book</h3>
-        <p className="card__author"> Author </p>
-        <p className="card__price"> Price </p>
+        <h3 className="card__title">{book.volumeInfo.title}</h3>
+        <p className="card__author"> {book.volumeInfo.authors.join(", ")} </p>
+        <p className="card__price"> {book.saleInfo.listPrice.amount + "€"} </p>
       </div>
     </div>
   );
