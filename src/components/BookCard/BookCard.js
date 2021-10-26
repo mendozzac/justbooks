@@ -6,7 +6,7 @@ const BookCard = ({ book, actionOnClick }) => {
       <img
         className="card__image"
         src={book.volumeInfo.imageLinks.thumbnail}
-        alt="loacting the voice in the film"
+        alt={book.volumeInfo.title}
         width="150"
         height="210"
       ></img>
