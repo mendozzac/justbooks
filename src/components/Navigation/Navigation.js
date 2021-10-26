@@ -3,10 +3,10 @@ const Navigation = () => {
     <nav aria-label="...">
       <ul className="pagination pagination-lg">
         <li className="page-item ">
-          <button>prev</button>
+          <button className="btn">prev</button>
         </li>
         <li className="page-item">
-          <button>next</button>
+          <button className="btn">next</button>
         </li>
       </ul>
     </nav>
