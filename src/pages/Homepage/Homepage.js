@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useHistory } from "react-router";
 import BookCard from "../../components/BookCard/BookCard";
 import useBooks from "../../hooks/useBooks";
 
@@ -7,12 +8,25 @@ const Homepage = () => {
   useEffect(() => {
     loadBooks();
   }, [loadBooks]);
+
+  const history = useHistory();
+
+  const goToBookDetail = (id) => {
+    history.push(`/detail/${id}`);
+  };
+
   return (
     <>
       <h2>Our Picks</h2>
-      {books.map((book) => (
-        <BookCard key={book.id} book={book} />
-      ))}
+      <div className="booklist">
+        {books.map((book) => (
+          <BookCard
+            key={book.id}
+            book={book}
+            actionOnClick={() => goToBookDetail(book.id)}
+          />
+        ))}
+      </div>
     </>
   );
 };
