@@ -10,12 +10,17 @@ export const loadBookAction = (book) => ({
   book,
 });
 
+export const loadBooksApiLocalAction = (books) => ({
+  type: actionTypes.loadBooksApiLocal,
+  books
+});
+
 export const deleteBookAction = (id) => ({
   type: actionTypes.deleteBook,
   id,
 });
 
-export const createBook = (book) => ({
+export const createBookAction = (book) => ({
   type: actionTypes.createBook,
   book,
 });
