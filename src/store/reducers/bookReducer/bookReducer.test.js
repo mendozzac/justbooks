@@ -6,12 +6,14 @@ describe("Given a bookReducer function", ()=> {
   describe("When it receives a list of books and an action to load books", ()=> {
     test("Then it should return a list of the loaded books", ()=> {
       const books = generateBooks();
+      console.log(`Books es: ${JSON.stringify(books)}`);
+
       const action = loadBooksAction(books);
-      console.log(`Esto es: ${JSON.stringify(action)}`);
+      console.log(`Action es: ${JSON.stringify(action)}`);
 
       const newBooks = booksReducer(books, action);
 
-      expect(newBooks).toEqual(books);
+      expect(newBooks).toEqual(books.items);
     })
   })
 
