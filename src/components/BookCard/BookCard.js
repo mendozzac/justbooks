@@ -2,6 +2,7 @@ import "./BookCard.scss";
 import Button from "../Button/Button";
 
 const BookCard = ({ book, actionOnClick }) => {
+  console.log(book.volumeInfo.authors);
   return (
     <>
       <div className="card">
@@ -17,8 +18,8 @@ const BookCard = ({ book, actionOnClick }) => {
             <h3 className="card__title">{book.volumeInfo.title}</h3>
             <p className="card__author">
               {" "}
-              {book.volumeInfo.authors.join(", ")}{" "}
-            </p>
+              {book.volumeInfo.authors.slice(0, 2).join(" , ")}{" "}
+            </p>{" "}
             <p className="card__price">
               {" "}
               {book.saleInfo.listPrice.amount + "€"}{" "}
