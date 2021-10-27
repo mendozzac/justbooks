@@ -11,8 +11,6 @@ const Homepage = () => {
     loadBooks();
   }, [loadBooks]);
 
-  //loadBooks();
-
   const history = useHistory();
 
   const goToBookDetail = (id) => {
