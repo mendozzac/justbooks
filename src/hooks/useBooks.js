@@ -12,17 +12,12 @@ const useBooks = (params) => {
     dispatch(loadBooksAction(books));
   }, [dispatch, params]);
 
-
   const loadBooksApiLocal = useCallback(async () => {
     const response = await fetch(`https://justmybooks.herokuapp.com/mybooks`);
     const books = await response.json();
-
     dispatch(loadBooksApiLocalAction(books));
+    console.log(books);
   }, [dispatch]);
-
-  // const createBook = (book) => {
-  //   dispatch(createBookAction(book));
-  // };
 
   const createBook = useCallback(async (book, url) => {
     const response = await fetch(url, {
@@ -35,9 +30,6 @@ const useBooks = (params) => {
     book = await response.json();
     dispatch(createBookAction(book))
   },[dispatch])
-
-  
-
 
 
   return {
