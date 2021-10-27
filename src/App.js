@@ -31,7 +31,7 @@ function App() {
     setTitle,
   } = useContext(BooksContext);
 
-  const maxResults = 10;
+  const maxResults = 12;
 
   useEffect(
     () => setStartIndex(page * maxResults, [page]),
