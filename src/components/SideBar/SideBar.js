@@ -5,7 +5,7 @@ const SideBar = () => {
     <>
       <div className="dropdown">
         <button
-          className="btn dropdown-toggle"
+          className="btn btn-outline-secondary dropdown-toggle"
           type="button"
           id="dropdownMenu2"
           data-bs-toggle="dropdown"
