@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useHistory } from "react-router";
 import BookCard from "../../components/BookCard/BookCard";
+import Navigation from "../../components/Navigation/Navigation";
 import useBooks from "../../hooks/useBooks";
 
 const Homepage = ({listado}) => {
@@ -9,8 +10,6 @@ const Homepage = ({listado}) => {
   useEffect(() => {
     loadBooks();
   }, [loadBooks]);
-
-  //loadBooks();
 
   const history = useHistory();
 
@@ -30,6 +29,7 @@ const Homepage = ({listado}) => {
           />
         ))}
       </div>
+      <Navigation />
     </>
   );
 };

@@ -10,13 +10,9 @@ import {
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import MyCart from "./pages/MyCart/MyCart";
-
-import Navigation from "./components/Navigation/Navigation";
-
 import SideBar from "./components/SideBar/SideBar";
 import FormPage from "./pages/FormPage/FormPage";
 import Homepage from "./pages/Homepage/Homepage";
@@ -40,12 +36,11 @@ function App() {
   return (
     <>
       <Router>
-        <SideBar />
         <header className="header">
           <div className="container header-container">
             <div className="topLinks">
               <nav className="header__burger">
-                <FontAwesomeIcon icon={faBars} />
+                <SideBar />
               </nav>
               <NavLink to="/home" activeClassName="current-section" exact>
                 <h1 className="logo">JustBooks</h1>
@@ -92,7 +87,6 @@ function App() {
                 <FormPage />
               </Route>
             </Switch>
-            <Navigation />
           </div>
         </main>
         <footer className="footer">
