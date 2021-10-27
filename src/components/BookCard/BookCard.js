@@ -2,7 +2,6 @@ import "./BookCard.scss";
 import Button from "../Button/Button";
 
 const BookCard = ({ book, actionOnClick }) => {
-  console.log(book.volumeInfo.authors);
   return (
     <>
       <div className="card">
