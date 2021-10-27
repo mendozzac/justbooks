@@ -4,6 +4,7 @@ const Button = ({ text, className, actionOnClick }) => {
       className={`btn button${className ? " " + className : ""}`}
       onClick={actionOnClick}
     >
+
       {text}
     </button>
   );
