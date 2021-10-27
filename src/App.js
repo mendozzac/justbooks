@@ -7,14 +7,7 @@ import {
   Redirect,
   NavLink,
 } from "react-router-dom";
-import {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -44,7 +37,7 @@ function App() {
   );
 
   const [listado, setListado] = useState(`?q=subject:art${permanentQueries}`);
-  console.log(listado);
+
   const [searchInput, setSearchInput] = useState("");
   useEffect(
     () =>
