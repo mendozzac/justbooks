@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import MyCart from "./pages/MyCart/MyCart";
@@ -22,12 +21,11 @@ function App() {
   return (
     <>
       <Router>
-        <SideBar />
         <header className="header">
           <div className="container header-container">
             <div className="topLinks">
               <nav className="header__burger">
-                <FontAwesomeIcon icon={faBars} />
+                <SideBar />
               </nav>
               <NavLink to="/home" activeClassName="current-section" exact>
                 <h1 className="logo">JustBooks</h1>
