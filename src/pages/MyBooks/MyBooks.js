@@ -18,6 +18,8 @@ const MyBooks = () => {
   return (
     <>
       <h2>My Books</h2>
+
+ <div className="booklist">
       <NavLink to="/form" activeClassName="current-section" exact>
          {books.map((book) => (
           <BookCard
@@ -30,6 +32,8 @@ const MyBooks = () => {
           <Button text="+" />
       </NavLink>
       <Navigation />
+            </div>
+
     </>
   );
 };

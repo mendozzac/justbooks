@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import MyCart from "./pages/MyCart/MyCart";
@@ -30,6 +30,7 @@ function App() {
     title,
     setTitle,
   } = useContext(BooksContext);
+
 
   const maxResults = 12;
 
@@ -68,6 +69,7 @@ function App() {
     setSearchInput("");
     if (searchInput !== "")
       setListado(`?q=${query.current}${permanentQueries}`);
+
   };
 
   return (
@@ -88,17 +90,26 @@ function App() {
                 <h1 className="logo">JustBooks</h1>
               </NavLink>
               <NavLink
-                to="/cart"
+                to="/mybooks"
                 activeClassName="current-section"
                 exact
-                className="cartButton"
+                className="cart-button"
               >
-                <FontAwesomeIcon icon={faShoppingCart} />
+                <FontAwesomeIcon icon={faStar} />
               </NavLink>
             </div>
-            <div className="searchBar">
-              <input type="text" value={searchInput} onChange={handleChange} />
-              <div className="searchButton" onClick={search}>
+
+            <div className="search-bar">
+              <input
+                className="search-bar__input"
+                type="text"
+                value={searchInput}
+                onChange={handleChange}
+                placeholder="Search..."
+              />
+              <div className="search-button" onClick={search}>
+
+
                 <FontAwesomeIcon icon={faSearch} />
               </div>
             </div>
@@ -111,6 +122,7 @@ function App() {
                 <Redirect to="/home" />
               </Route>
               <Route path="/home" exact>
+
                 <Homepage listado={listado} title={title} />
               </Route>
               <Route path="/detail/:id" exact>
