@@ -2,18 +2,17 @@ import { loadBooksAction } from "../../actions/actionCreators";
 import booksReducer from "./booksReducer";
 import generateBooks from "../../../factories/bookFactory";
 
-describe("Given a bookReducer function", ()=> {
-  describe("When it receives a list of books and an action to load books", ()=> {
-    test("Then it should return a list of the loaded books", ()=> {
+describe("Given a bookReducer function", () => {
+  describe("When it receives a list of books and an action to load books", () => {
+    test("Then it should return a list of the loaded books", () => {
       const books = generateBooks();
       const action = loadBooksAction(books);
-      console.log(`Esto es: ${JSON.stringify(action)}`);
-
+      console.log(books);
       const newBooks = booksReducer(books, action);
 
       expect(newBooks).toEqual(books);
-    })
-  })
+    });
+  });
 
   // describe("and an action to create a book", ()=> {
   //   test("", ()=>{
@@ -38,5 +37,4 @@ describe("Given a bookReducer function", ()=> {
 
   //   })
   // })
-
-})
+});

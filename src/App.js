@@ -74,7 +74,6 @@ function App() {
                 <FormPage />
               </Route>
             </Switch>
-            <Navigation />
           </div>
         </main>
         <footer className="footer">
