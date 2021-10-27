@@ -3,13 +3,10 @@ import actionTypes from "../../actions/actionTypes";
 const booksReducer = (books, action) => {
   let newBooks;
 
-  switch (action.type) {
-    case actionTypes.loadBooks:
-      newBooks = [...action.books.items];
-      break;
-
-    default:
-      newBooks = books;
+  if (action.type === actionTypes.loadBooks) {
+    newBooks = [...action.books.items];
+  } else {
+    newBooks = books;
   }
   return newBooks;
 };
