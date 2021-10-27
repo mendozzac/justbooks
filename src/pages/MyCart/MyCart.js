@@ -6,7 +6,7 @@ const MyCart = () => {
       <div className="cart-card">
         <img
           className="cart-card__img"
-          src="http://books.google.com/books/content?id=PP6SDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+          src="https://books.google.com/books/content?id=PP6SDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
           alt="loacting the voice in the film"
           width="150"
           height="200"
