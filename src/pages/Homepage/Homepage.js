@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useHistory } from "react-router";
 import BookCard from "../../components/BookCard/BookCard";
+import Navigation from "../../components/Navigation/Navigation";
 import useBooks from "../../hooks/useBooks";
 
 const Homepage = () => {
@@ -29,6 +30,7 @@ const Homepage = () => {
           />
         ))}
       </div>
+      <Navigation />
     </>
   );
 };

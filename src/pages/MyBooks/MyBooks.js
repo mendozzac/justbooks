@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Button from "../../components/Button/Button";
+import Navigation from "../../components/Navigation/Navigation";
 
 const MyBooks = () => {
   return (
@@ -8,6 +9,7 @@ const MyBooks = () => {
       <NavLink to="/form" activeClassName="current-section" exact>
         <Button text="+" />
       </NavLink>
+      <Navigation />
     </>
   );
 };
