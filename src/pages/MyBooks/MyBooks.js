@@ -6,10 +6,12 @@ const MyBooks = () => {
   return (
     <>
       <h2>My Books</h2>
-      <NavLink to="/form" activeClassName="current-section" exact>
-        <Button text="+" />
-      </NavLink>
-      <Navigation />
+      <div className="booklist">
+        <NavLink to="/form" activeClassName="current-section" exact>
+          <Button text="+" />
+        </NavLink>
+        <Navigation />
+      </div>
     </>
   );
 };
