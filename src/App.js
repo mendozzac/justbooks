@@ -7,6 +7,7 @@ import {
   Redirect,
   NavLink,
 } from "react-router-dom";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -18,6 +19,20 @@ import Homepage from "./pages/Homepage/Homepage";
 import MyBooks from "./pages/MyBooks/MyBooks";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleChange = (event) => {
+    setSearchTerm(event.currentTarget.value);
+  }
+
+  const [listado, setListado] = useState(`?q=subject:art&printType=books&filter=paid-ebooks&startIndex=0&maxResults=10&langRestrict=en`);
+  const search = () =>{
+    setListado(`?q=${searchTerm}&printType=books&filter=paid-ebooks&startIndex=0&maxResults=10&langRestrict=en`);
+  }
+  
+
+  
+
   return (
     <>
       <Router>
@@ -40,8 +55,11 @@ function App() {
               </NavLink>
             </div>
             <div className="searchBar">
-              <input type="text" />
-              <div className="searchButton">
+              <input type="text" 
+                     value={searchTerm} 
+                     onChange={handleChange}
+                     />
+              <div className="searchButton" onClick={search}>
                 <FontAwesomeIcon icon={faSearch} />
               </div>
             </div>
@@ -54,7 +72,7 @@ function App() {
                 <Redirect to="/home" />
               </Route>
               <Route path="/home" exact>
-                <Homepage />
+                <Homepage listado={listado}/>
               </Route>
               <Route path="/detail/:id" exact>
                 <DetailPage />

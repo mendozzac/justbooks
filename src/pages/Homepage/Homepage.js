@@ -4,10 +4,9 @@ import BookCard from "../../components/BookCard/BookCard";
 import Navigation from "../../components/Navigation/Navigation";
 import useBooks from "../../hooks/useBooks";
 
-const Homepage = () => {
-  const ourPicks =
-    "?q=subject:art&printType=books&filter=paid-ebooks&startIndex=0&maxResults=10&langRestrict=en";
-  const { books, loadBooks } = useBooks(ourPicks);
+const Homepage = ({listado}) => {
+
+  const { books, loadBooks } = useBooks(listado);
   useEffect(() => {
     loadBooks();
   }, [loadBooks]);
