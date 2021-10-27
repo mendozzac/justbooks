@@ -7,7 +7,7 @@ import {
   Redirect,
   NavLink,
 } from "react-router-dom";
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -20,10 +20,18 @@ import MyBooks from "./pages/MyBooks/MyBooks";
 import BooksContext from "./store/contexts/BooksContext";
 
 function App() {
-  const { page, startIndex, setStartIndex, resetIndex } =
-    useContext(BooksContext);
+  const {
+    page,
+    startIndex,
+    setStartIndex,
+    resetIndex,
+    query,
+    resetHomepage,
+    title,
+    setTitle,
+  } = useContext(BooksContext);
 
-  const maxResults = 10;
+  const maxResults = 12;
 
   useEffect(
     () => setStartIndex(page * maxResults, [page]),
@@ -46,10 +54,8 @@ function App() {
           query.current !== "" ? query.current : "subject:art"
         }${permanentQueries}`
       ),
-    [permanentQueries, searchInput, startIndex]
+    [permanentQueries, query, searchInput, startIndex]
   );
-
-  const query = useRef("");
 
   const handleChange = (event) => {
     setSearchInput(event.currentTarget.value);
@@ -57,7 +63,9 @@ function App() {
 
   const search = () => {
     query.current = searchInput;
+    setTitle(searchInput);
     resetIndex();
+    setSearchInput("");
     if (searchInput !== "")
       setListado(`?q=${query.current}${permanentQueries}`);
   };
@@ -71,7 +79,12 @@ function App() {
               <nav className="header__burger">
                 <SideBar />
               </nav>
-              <NavLink to="/home" activeClassName="current-section" exact>
+              <NavLink
+                to="/home"
+                activeClassName="current-section"
+                exact
+                onClick={resetHomepage}
+              >
                 <h1 className="logo">JustBooks</h1>
               </NavLink>
               <NavLink
@@ -98,7 +111,7 @@ function App() {
                 <Redirect to="/home" />
               </Route>
               <Route path="/home" exact>
-                <Homepage listado={listado} />
+                <Homepage listado={listado} title={title} />
               </Route>
               <Route path="/detail/:id" exact>
                 <DetailPage />
