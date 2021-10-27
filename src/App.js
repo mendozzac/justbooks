@@ -13,9 +13,6 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import MyCart from "./pages/MyCart/MyCart";
-
-import Navigation from "./components/Navigation/Navigation";
-
 import SideBar from "./components/SideBar/SideBar";
 import FormPage from "./pages/FormPage/FormPage";
 import Homepage from "./pages/Homepage/Homepage";
