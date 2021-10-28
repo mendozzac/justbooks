@@ -27,8 +27,6 @@ const MyBooks = () => {
             addToFav={() => {}}
           />
         ))}
-
-        <Navigation />
       </div>
     </>
   );
