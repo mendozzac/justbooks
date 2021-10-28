@@ -92,11 +92,16 @@ function App() {
                 activeClassName="current-section"
                 exact
                 onClick={resetHomepage}
-              >  
+              >
                 <div className="text-center">
-                   <FontAwesomeIcon icon={faHatWizard} color="orange" size="2x"  aria-hidden="true" />
+                  <FontAwesomeIcon
+                    icon={faHatWizard}
+                    color="orange"
+                    size="2x"
+                    aria-hidden="true"
+                  />
                   <h1 className="logo text"> JustBooks </h1>
-                </div>  
+                </div>
               </NavLink>
               
               <NavLink
