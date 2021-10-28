@@ -1,4 +1,5 @@
 import {
+  createBookAction,
   deleteBookAction,
   loadBooksAction,
 } from "../../actions/actionCreators";
@@ -18,19 +19,27 @@ describe("Given a bookReducer function", () => {
     });
   });
 
-  // describe("and an action to create a book", ()=> {
-  //   test("", ()=>{
-  //     const books=getBooks();
-  //     const book=getBook();
-  //     const action = createBookAction(newBook);
+  describe.skip("When it receives a list of books and an action to create a book", () => {
+    test("Then it should add it to the list", () => {
+      const books = [];
+      const newBook = {
+        id: "hi",
+        image: "http://placeimg.com/640/480/cities",
+        title: "Random",
+        author: "Random",
+        price: "5.00",
+      };
+      const action = createBookAction(newBook);
 
-  //     const newBook = booksReducer(book, action);
+      const newBooks = booksReducer(books, action);
+      console.log(newBooks);
+      console.log(newBook);
 
-  //     expect(newBooks).toContain(newBook);
-  //   })
-  // })
+      expect(newBooks).toContain(newBook);
+    });
+  });
 
-  describe("When it receives a book", () => {
+  describe("When it receives a list of books and an action to delete a book", () => {
     test("Then it removes the book from the list", () => {
       const books = generateBooks();
       const bookToDelete = books.items[1];
