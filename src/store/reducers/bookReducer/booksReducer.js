@@ -10,7 +10,7 @@ const booksReducer = (books, action) => {
   } else if (action.type === actionTypes.createBook) {
     newBooks = [...books];
   } else if (action.type === actionTypes.deleteBook) {
-    newBooks = books.filter( book => book.id !== action.id)
+    newBooks = books.filter((book) => book.id !== action.id);
   } else {
     newBooks = books;
   }

@@ -1,4 +1,8 @@
-import { loadBooksAction } from "../../actions/actionCreators";
+import {
+  createBookAction,
+  deleteBookAction,
+  loadBooksAction,
+} from "../../actions/actionCreators";
 import booksReducer from "./booksReducer";
 import generateBooks from "../../../factories/generateBooks";
 
@@ -15,27 +19,34 @@ describe("Given a bookReducer function", () => {
     });
   });
 
-  // describe("and an action to create a book", ()=> {
-  //   test("", ()=>{
-  //     const books=getBooks();
-  //     const book=getBook();
-  //     const action = createBookAction(newBook);
+  describe.skip("When it receives a list of books and an action to create a book", () => {
+    test("Then it should add it to the list", () => {
+      const books = [];
+      const newBook = {
+        id: "hi",
+        image: "http://placeimg.com/640/480/cities",
+        title: "Random",
+        author: "Random",
+        price: "5.00",
+      };
+      const action = createBookAction(newBook);
 
-  //     const newBook = booksReducer(book, action);
+      const newBooks = booksReducer(books, action);
+      console.log(newBooks);
+      console.log(newBook);
 
-  //     expect(newBooks).toContain(newBook);
-  //   })
-  // })
+      expect(newBooks).toContain(newBook);
+    });
+  });
 
-  // describe("", ()=>{
-  //   test("", ()=>{
-  //     const Books=getBooks();
-  //     const bookToDelete= books[1];
-  //     const action=deleteBookAction(bookToDelete.id);
+  describe("When it receives a list of books and an action to delete a book", () => {
+    test("Then it removes the book from the list", () => {
+      const books = generateBooks();
+      const bookToDelete = books.items[1];
+      const action = deleteBookAction(bookToDelete.id);
 
-  //     const newBooks = booksReducer(books, action);
-  //     expect(newBooks).not.toContain(bookToDelete);
-
-  //   })
-  // })
+      const newBooks = booksReducer(books.items, action);
+      expect(newBooks).not.toContain(bookToDelete);
+    });
+  });
 });
