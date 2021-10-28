@@ -32,8 +32,7 @@ function App() {
     setTitle,
   } = useContext(BooksContext);
 
-
-  const maxResults = 12;
+  const maxResults = 24;
 
   useEffect(
     () => setStartIndex(page * maxResults, [page]),
@@ -70,7 +69,6 @@ function App() {
     setSearchInput("");
     if (searchInput !== "")
       setListado(`?q=${query.current}${permanentQueries}`);
-
   };
 
   return (
@@ -125,7 +123,6 @@ function App() {
                 <Redirect to="/home" />
               </Route>
               <Route path="/home" exact>
-
                 <Homepage listado={listado} title={title} />
               </Route>
               <Route path="/detail/:id" exact>
