@@ -28,7 +28,7 @@ const Homepage = ({ listado, title = "Our Books" }) => {
   return books.length ? (
     <>
       <h2>{title}</h2>
-      <div className="booklist">
+      <ul className="booklist">
           {books.map((book) => (
             <BookCard
               key={book.id}
@@ -37,16 +37,16 @@ const Homepage = ({ listado, title = "Our Books" }) => {
               addToFav={addToFav}
             />
           ))}
-      </div>
+      </ul>
+
       <Navigation />
     </>
-  
-  ) : 
-  (<div>
+  ) : (
+    <div className="container text-center mt-5">
       <FontAwesomeIcon icon={faSpinner} spin />
-            <span className="sr-only">Loading...</span>
-          </div>) ;
-
+      <span className="sr-only">Loading...</span>
+    </div>
+  );
 };
 
 export default Homepage;

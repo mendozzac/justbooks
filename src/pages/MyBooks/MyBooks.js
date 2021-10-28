@@ -19,6 +19,7 @@ const MyBooks = () => {
 
   return (
     <>
+
       <div className="header-subtitle container">
         <h2>My Books</h2>
         <NavLink to="/form" activeClassName="current-section" exact>
@@ -29,6 +30,8 @@ const MyBooks = () => {
       <p> Currently you have {books.length} favourite books you can buy. </p>
 
       <div className="booklist">
+
+
         {books.map((book) => (
           <BookCard
             key={book.id}
@@ -38,7 +41,7 @@ const MyBooks = () => {
             removeFromFav={removeFromFav}
           />
         ))}
-      </div>
+      </ul>
     </>
   );
 };
