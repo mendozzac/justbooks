@@ -19,6 +19,13 @@ h1:hover {
   transform: scale(1.2, 1.2);
 }
 
+.list-group-item {
+  cursor: pointer;
+  &:hover {
+    font-weight: 600;
+  }
+}
+
 .main-container {
   width: 100%;
 }
