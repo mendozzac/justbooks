@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 //import { useContext } from "react";
 //import BooksContext from "../../store/contexts/BooksContext";
 
-const BookCard = ({ book, actionOnClick, addToFav }) => {
+const BookCard = ({ book, actionOnClick, addToFav, removeFromFav }) => {
   const location = useLocation();
   const buttonText =
     location.pathname === "/mybooks" ? "Remove" : "Add to favs";
@@ -41,7 +41,7 @@ const BookCard = ({ book, actionOnClick, addToFav }) => {
           className="btn-warning card__fav-button"
           actionOnClick={
             location.pathname === "/mybooks"
-              ? () => console.log("to be deleted")
+              ? () => removeFromFav(book.id)
               : () => addToFav(book)
           }
         />
