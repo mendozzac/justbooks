@@ -1,9 +1,15 @@
 import "./BookCard.scss";
 import Button from "../Button/Button";
+import { useLocation } from "react-router";
 //import { useContext } from "react";
 //import BooksContext from "../../store/contexts/BooksContext";
 
 const BookCard = ({ book, actionOnClick, addToFav }) => {
+  const location = useLocation();
+  const buttonText =
+    location.pathname === "/mybooks" ? "Remove" : "Add to favs";
+  console.log(location.pathname);
+  console.log(buttonText);
 
   return (
     <>
@@ -28,7 +34,10 @@ const BookCard = ({ book, actionOnClick, addToFav }) => {
             </p>
           </div>
         </div>
-        <Button text="Add to favs" className="btn-warning card__fav-button" actionOnClick={() => addToFav(book)}
+        <Button
+          text={buttonText}
+          className="btn-warning card__fav-button"
+          actionOnClick={() => addToFav(book)}
         />
       </div>
     </>

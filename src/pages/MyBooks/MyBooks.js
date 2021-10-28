@@ -11,7 +11,6 @@ const MyBooks = () => {
   useEffect(() => {
     loadBooksApiLocal();
   }, [loadBooksApiLocal]);
-  console.log(books);
 
   return (
     <>
