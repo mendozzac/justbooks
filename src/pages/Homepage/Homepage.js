@@ -20,7 +20,6 @@ const Homepage = ({ listado, title = "Our Books" }) => {
   const addToFav = (book) => {
     const url = "https://justmybooks.herokuapp.com/mybooks";
     const addBookToMyBooks = createBook(book, url);
-    console.log(book);
     return addBookToMyBooks;
   };
 
