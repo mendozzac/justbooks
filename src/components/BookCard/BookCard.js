@@ -8,8 +8,6 @@ const BookCard = ({ book, actionOnClick, addToFav }) => {
   const location = useLocation();
   const buttonText =
     location.pathname === "/mybooks" ? "Remove" : "Add to favs";
-  console.log(location.pathname);
-  console.log(buttonText);
 
   return (
     <>
@@ -37,7 +35,11 @@ const BookCard = ({ book, actionOnClick, addToFav }) => {
         <Button
           text={buttonText}
           className="btn-warning card__fav-button"
-          actionOnClick={() => addToFav(book)}
+          actionOnClick={
+            location.pathname === "/mybooks"
+              ? () => console.log("to be deleted")
+              : () => addToFav(book)
+          }
         />
       </div>
     </>
