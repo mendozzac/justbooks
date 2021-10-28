@@ -28,7 +28,7 @@ const Homepage = ({ listado, title = "Our Books" }) => {
   return books.length ? (
     <>
       <h2>{title}</h2>
-      <div className="booklist">
+      <ul className="booklist">
           {books.map((book) => (
             <BookCard
               key={book.id}
@@ -37,7 +37,7 @@ const Homepage = ({ listado, title = "Our Books" }) => {
               addToFav={addToFav}
             />
           ))}
-      </div>
+      </ul>
       <Navigation />
     </>
   
