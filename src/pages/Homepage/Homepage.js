@@ -28,16 +28,17 @@ const Homepage = ({ listado, title = "Our Books" }) => {
   return books.length ? (
     <>
       <h2>{title}</h2>
-      <div className="booklist">
-        {books.map((book) => (
-          <BookCard
-            key={book.id}
-            book={book}
-            actionOnClick={() => goToBookDetail(book.id)}
-            addToFav={addToFav}
-          />
-        ))}
-      </div>
+      <ul className="booklist">
+          {books.map((book) => (
+            <BookCard
+              key={book.id}
+              book={book}
+              actionOnClick={() => goToBookDetail(book.id)}
+              addToFav={addToFav}
+            />
+          ))}
+      </ul>
+
       <Navigation />
     </>
   ) : (

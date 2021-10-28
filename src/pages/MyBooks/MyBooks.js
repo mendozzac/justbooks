@@ -24,7 +24,7 @@ const MyBooks = () => {
       <NavLink to="/form" activeClassName="current-section" exact>
         <Button text="+" className="btn-warning mb-4" />
       </NavLink>
-      <div className="booklist">
+      <ul className="booklist">
         {books.map((book) => (
           <BookCard
             key={book.id}
@@ -34,7 +34,7 @@ const MyBooks = () => {
             removeFromFav={removeFromFav}
           />
         ))}
-      </div>
+      </ul>
     </>
   );
 };
