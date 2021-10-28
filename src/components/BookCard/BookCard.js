@@ -2,7 +2,7 @@ import "./BookCard.scss";
 import Button from "../Button/Button";
 import { useLocation } from "react-router";
 
-const BookCard = ({ book, actionOnClick, addToFav }) => {
+const BookCard = ({ book, actionOnClick, addToFav, removeFromFav }) => {
   const location = useLocation();
   const buttonText =
     location.pathname === "/mybooks" ? "Remove" : "Add to favs";
@@ -22,11 +22,15 @@ const BookCard = ({ book, actionOnClick, addToFav }) => {
             <h3 className="card__title">{book.volumeInfo.title}</h3>
             <p className="card__author">
               {" "}
-              {book.volumeInfo.authors.slice(0, 2).join(" , ")}{" "}
+              {book.volumeInfo.authors
+                ? book.volumeInfo.authors.slice(0, 2).join(" , ")
+                : "No author"}{" "}
             </p>{" "}
             <p className="card__price">
               {" "}
-              {book.saleInfo.listPrice.amount + "€"}{" "}
+              {book.saleInfo.listPrice
+                ? book.saleInfo.listPrice.amount + "€"
+                : "Free"}{" "}
             </p>
           </div>
         </div>
@@ -35,7 +39,7 @@ const BookCard = ({ book, actionOnClick, addToFav }) => {
           className="btn-warning card__fav-button"
           actionOnClick={
             location.pathname === "/mybooks"
-              ? () => console.log("to be deleted")
+              ? () => removeFromFav(book.id)
               : () => addToFav(book)
           }
         />
