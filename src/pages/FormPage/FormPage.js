@@ -1,77 +1,76 @@
 import "./FormPage.scss";
 import Button from "../../components/Button/Button";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useBooks from "../../hooks/useBooks";
 
 const FormPage = () => {
-
-  const { createBook, loadBooksApiLocal } = useBooks();
+  const { createBook } = useBooks();
 
   const initialData = {
     image: "",
-    title: "", 
+    title: "",
     author: "",
     publisher: "",
     pages: "",
-    description: ""
-    }
-
-
-
-
- 
+    description: "",
+  };
 
   const [bookData, setBookData] = useState(initialData);
   const [isDisabled, setIsDisabled] = useState(true);
 
   const checkForm = () => {
-    if (bookData.image !== "" && bookData.title !== "" &&
-      bookData.author !== "" && bookData.publisher !== "" &&
-      bookData.pages !== "" && bookData.description !== "") {
-    setIsDisabled(false);
-  } 
-  }
-  
-  
+    if (
+      bookData.image !== "" &&
+      bookData.title !== "" &&
+      bookData.author !== "" &&
+      bookData.publisher !== "" &&
+      bookData.pages !== "" &&
+      bookData.description !== ""
+    ) {
+      setIsDisabled(false);
+    }
+  };
 
-  const changeData = (event)=> {
+  const changeData = (event) => {
     setBookData({
       ...bookData,
       [event.target.id]: event.target.value,
-    })
+    });
     checkForm();
-  }
+  };
 
   const resetForm = () => {
-    setBookData(initialData)
-    setIsDisabled(true)
+    setBookData(initialData);
+    setIsDisabled(true);
   };
 
   const onCreateBook = (event) => {
     event.preventDefault();
-      const url = "https://justmybooks.herokuapp.com/mybooks";
-      const newBook =   {   
+    const url = "https://justmybooks.herokuapp.com/mybooks";
+    const newBook = {
       volumeInfo: {
         title: bookData.title,
         authors: [bookData.author],
         publisher: bookData.publisher,
         description: bookData.description,
-        pageCount:bookData.pages,
+        pageCount: bookData.pages,
         imageLinks: {
-          thumbnail: bookData.image ? bookData.image : 'https://images-na.ssl-images-amazon.com/images/I/51RTdGBiL6L._SX331_BO1,204,203,200_.jpg',
-        }
+          thumbnail: bookData.image
+            ? bookData.image
+            : "https://images-na.ssl-images-amazon.com/images/I/51RTdGBiL6L._SX331_BO1,204,203,200_.jpg",
+        },
       },
       saleInfo: {
         listPrice: {
-          amount: '0.00'
-        }
-      }
-    }
-      
+          amount: "0.00",
+        },
+      },
+    };
+
     createBook(newBook, url);
-    
-   resetForm();
-  }
+
+    resetForm();
+  };
 
   return (
     <>
@@ -144,7 +143,11 @@ const FormPage = () => {
             onChange={changeData}
           />
         </div>
-        <Button text="Add Book" className="addBookButton" disabled={isDisabled}/>
+        <Button
+          text="Add Book"
+          className="addBookButton"
+          disabled={isDisabled}
+        />
       </form>
     </>
   );
