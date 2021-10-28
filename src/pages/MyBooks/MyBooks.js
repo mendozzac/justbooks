@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import Button from "../../components/Button/Button";
-import Navigation from "../../components/Navigation/Navigation";
 import { useEffect } from "react";
 import useBooks from "../../hooks/useBooks";
 import BookCard from "../../components/BookCard/BookCard";
