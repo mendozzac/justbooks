@@ -1,5 +1,4 @@
 const faker = require("faker");
-const fs = require("fs");
 
 const generateBooks = () => {
   let books = [];
@@ -21,8 +20,5 @@ const generateBooks = () => {
   return { items: books };
 };
 
-let dataObj = generateBooks();
-
-fs.writeFileSync("data.json", JSON.stringify(dataObj, null, "\t"));
 
 export default generateBooks;

@@ -7,9 +7,9 @@ import {
   Redirect,
   NavLink,
 } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import MyCart from "./pages/MyCart/MyCart";
@@ -17,21 +17,60 @@ import SideBar from "./components/SideBar/SideBar";
 import FormPage from "./pages/FormPage/FormPage";
 import Homepage from "./pages/Homepage/Homepage";
 import MyBooks from "./pages/MyBooks/MyBooks";
+import BooksContext from "./store/contexts/BooksContext";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const {
+    page,
+    startIndex,
+    setStartIndex,
+    resetIndex,
+    query,
+    resetHomepage,
+    title,
+    setTitle,
+  } = useContext(BooksContext);
+
+
+  const maxResults = 12;
+
+  useEffect(
+    () => setStartIndex(page * maxResults, [page]),
+    [page, setStartIndex]
+  );
+
+  const permanentQueries = useMemo(
+    () =>
+      `&printType=books&filter=paid-ebooks&startIndex=${startIndex}&maxResults=${maxResults}&langRestrict=en`,
+    [startIndex]
+  );
+
+  const [listado, setListado] = useState(`?q=subject:art${permanentQueries}`);
+
+  const [searchInput, setSearchInput] = useState("");
+  useEffect(
+    () =>
+      setListado(
+        `?q=${
+          query.current !== "" ? query.current : "subject:art"
+        }${permanentQueries}`
+      ),
+    [permanentQueries, query, searchInput, startIndex]
+  );
 
   const handleChange = (event) => {
-    setSearchTerm(event.currentTarget.value);
-  }
+    setSearchInput(event.currentTarget.value);
+  };
 
-  const [listado, setListado] = useState(`?q=subject:art&printType=books&filter=paid-ebooks&startIndex=0&maxResults=10&langRestrict=en`);
-  const search = () =>{
-    setListado(`?q=${searchTerm}&printType=books&filter=paid-ebooks&startIndex=0&maxResults=10&langRestrict=en`);
-  }
-  
+  const search = () => {
+    query.current = searchInput;
+    setTitle(searchInput);
+    resetIndex();
+    setSearchInput("");
+    if (searchInput !== "")
+      setListado(`?q=${query.current}${permanentQueries}`);
 
-  
+  };
 
   return (
     <>
@@ -42,24 +81,35 @@ function App() {
               <nav className="header__burger">
                 <SideBar />
               </nav>
-              <NavLink to="/home" activeClassName="current-section" exact>
+              <NavLink
+                to="/home"
+                activeClassName="current-section"
+                exact
+                onClick={resetHomepage}
+              >
                 <h1 className="logo">JustBooks</h1>
               </NavLink>
               <NavLink
-                to="/cart"
+                to="/mybooks"
                 activeClassName="current-section"
                 exact
-                className="cartButton"
+                className="cart-button"
               >
-                <FontAwesomeIcon icon={faShoppingCart} />
+                <FontAwesomeIcon icon={faStar} />
               </NavLink>
             </div>
-            <div className="searchBar">
-              <input type="text" 
-                     value={searchTerm} 
-                     onChange={handleChange}
-                     />
-              <div className="searchButton" onClick={search}>
+
+            <div className="search-bar">
+              <input
+                className="search-bar__input"
+                type="text"
+                value={searchInput}
+                onChange={handleChange}
+                placeholder="Search..."
+              />
+              <div className="search-button" onClick={search}>
+
+
                 <FontAwesomeIcon icon={faSearch} />
               </div>
             </div>
@@ -72,7 +122,8 @@ function App() {
                 <Redirect to="/home" />
               </Route>
               <Route path="/home" exact>
-                <Homepage listado={listado}/>
+
+                <Homepage listado={listado} title={title} />
               </Route>
               <Route path="/detail/:id" exact>
                 <DetailPage />

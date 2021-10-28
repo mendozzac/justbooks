@@ -1,7 +1,10 @@
 import "./BookCard.scss";
 import Button from "../Button/Button";
+//import { useContext } from "react";
+//import BooksContext from "../../store/contexts/BooksContext";
 
-const BookCard = ({ book, actionOnClick }) => {
+const BookCard = ({ book, actionOnClick, addToFav }) => {
+
   return (
     <>
       <div className="card">
@@ -10,7 +13,7 @@ const BookCard = ({ book, actionOnClick }) => {
             className="card__image"
             src={book.volumeInfo.imageLinks.thumbnail}
             alt={book.volumeInfo.title}
-            width="150"
+            width="140"
             height="210"
           ></img>
           <div className="card__content">
@@ -25,7 +28,8 @@ const BookCard = ({ book, actionOnClick }) => {
             </p>
           </div>
         </div>
-        <Button text="Add to favs" className="btn-warning card__fav-button" />
+        <Button text="Add to favs" className="btn-warning card__fav-button" actionOnClick={() => addToFav(book)}
+        />
       </div>
     </>
   );
