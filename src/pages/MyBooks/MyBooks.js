@@ -19,11 +19,15 @@ const MyBooks = () => {
 
   return (
     <>
-      <h2>My Books</h2>
-      <p> Currently you have {books.length} favourite books you can buy. </p> 
-      <NavLink to="/form" activeClassName="current-section" exact>
-        <Button text="+" className="btn-warning mb-4" />
-      </NavLink>
+      <div className="header-subtitle container">
+        <h2>My Books</h2>
+        <NavLink to="/form" activeClassName="current-section" exact>
+          <Button text="+" className="btn-warning" />
+        </NavLink>
+      </div>
+
+      <p> Currently you have {books.length} favourite books you can buy. </p>
+
       <div className="booklist">
         {books.map((book) => (
           <BookCard
