@@ -17,7 +17,6 @@ import FormPage from "./pages/FormPage/FormPage";
 import Homepage from "./pages/Homepage/Homepage";
 import MyBooks from "./pages/MyBooks/MyBooks";
 import BooksContext from "./store/contexts/BooksContext";
-import useBooks from "./hooks/useBooks";
 
 function App() {
   const {
@@ -69,14 +68,6 @@ function App() {
     if (searchInput !== "")
       setListado(`?q=${query.current}${permanentQueries}`);
   };
-
-  const {createBook} = useBooks();
-
-  // const createBook = (book) => {
-  //   setBooks([
-  //     ...books, book
-  //   ]);
-  // };
 
   return (
     <>
@@ -148,7 +139,7 @@ function App() {
                 <MyBooks />
               </Route>
               <Route path="/form" exact>
-                <FormPage onSubmit={createBook}/>
+                <FormPage />
               </Route>
             </Switch>
           </div>

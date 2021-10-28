@@ -1,37 +1,76 @@
 import "./FormPage.scss";
 import Button from "../../components/Button/Button";
 import { useState } from "react";
+import useBooks from "../../hooks/useBooks";
 
-const FormPage = ({onSubmit}) => {
+const FormPage = () => {
+  const { createBook } = useBooks();
+
   const initialData = {
     image: "",
-    title: "", 
+    title: "",
     author: "",
     publisher: "",
     pages: "",
-    description: ""
+    description: "",
   };
 
   const [bookData, setBookData] = useState(initialData);
+  const [isDisabled, setIsDisabled] = useState(true);
 
-  const changeData = (event)=> {
+  const checkForm = () => {
+    if (
+      bookData.image !== "" &&
+      bookData.title !== "" &&
+      bookData.author !== "" &&
+      bookData.publisher !== "" &&
+      bookData.pages !== "" &&
+      bookData.description !== ""
+    ) {
+      setIsDisabled(false);
+    }
+  };
+
+  const changeData = (event) => {
     setBookData({
       ...bookData,
       [event.target.id]: event.target.value,
-    })
-  }
+    });
+    checkForm();
+  };
 
   const resetForm = () => {
-    setBookData(initialData)
+    setBookData(initialData);
+    setIsDisabled(true);
   };
 
   const onCreateBook = (event) => {
     event.preventDefault();
-    onSubmit(bookData);
-    resetForm();
-  }
+    const url = "https://justmybooks.herokuapp.com/mybooks";
+    const newBook = {
+      volumeInfo: {
+        title: bookData.title,
+        authors: [bookData.author],
+        publisher: bookData.publisher,
+        description: bookData.description,
+        pageCount: bookData.pages,
+        imageLinks: {
+          thumbnail: bookData.image
+            ? bookData.image
+            : "https://images-na.ssl-images-amazon.com/images/I/51RTdGBiL6L._SX331_BO1,204,203,200_.jpg",
+        },
+      },
+      saleInfo: {
+        listPrice: {
+          amount: "0.00",
+        },
+      },
+    };
 
-  console.log(bookData);
+    createBook(newBook, url);
+
+    resetForm();
+  };
 
   return (
     <>
@@ -85,17 +124,17 @@ const FormPage = ({onSubmit}) => {
         <div className="form-group">
           <label htmlFor="image">Cover image</label>
           <input
-            type="file"
+            type="text"
             id="image"
             value={bookData.image}
             className="form-control"
-            placeholder="Upload"
+            placeholder="URL"
             onChange={changeData}
           />
         </div>
         <div className="form-group">
           <label htmlFor="description">Description</label>
-          <input
+          <textarea
             type="textarea"
             id="description"
             value={bookData.description}
@@ -104,7 +143,11 @@ const FormPage = ({onSubmit}) => {
             onChange={changeData}
           />
         </div>
-        <Button text="Add Book" />
+        <Button
+          text="Add Book"
+          className="addBookButton"
+          disabled={isDisabled}
+        />
       </form>
     </>
   );
