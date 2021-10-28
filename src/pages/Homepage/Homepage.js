@@ -25,18 +25,10 @@ const Homepage = ({ listado, title = "Our Books" }) => {
     return addBookToMyBooks;
   };
 
-  return (
+  return books.length ? (
     <>
       <h2>{title}</h2>
       <div className="booklist">
-
-        if (books.length===0) {
-          <div>
-            <FontAwesomeIcon icon={faSpinner} spin />
-            <span class="sr-only">Loading...</span>
-          </div>  
-        } else {
-          <div>
           {books.map((book) => (
             <BookCard
               key={book.id}
@@ -45,12 +37,16 @@ const Homepage = ({ listado, title = "Our Books" }) => {
               addToFav={addToFav}
             />
           ))}
-          </div>
-        } 
       </div>
       <Navigation />
     </>
-  );
+  
+  ) : 
+  (<div>
+      <FontAwesomeIcon icon={faSpinner} spin />
+            <span class="sr-only">Loading...</span>
+          </div>) ;
+
 };
 
 export default Homepage;
