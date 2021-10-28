@@ -24,11 +24,15 @@ const BookCard = ({ book, actionOnClick, addToFav }) => {
             <h3 className="card__title">{book.volumeInfo.title}</h3>
             <p className="card__author">
               {" "}
-              {book.volumeInfo.authors.slice(0, 2).join(" , ")}{" "}
+              {book.volumeInfo.authors
+                ? book.volumeInfo.authors.slice(0, 2).join(" , ")
+                : "No author"}{" "}
             </p>{" "}
             <p className="card__price">
               {" "}
-              {book.saleInfo.listPrice.amount + "€"}{" "}
+              {book.saleInfo.listPrice
+                ? book.saleInfo.listPrice.amount + "€"
+                : "Free"}{" "}
             </p>
           </div>
         </div>
