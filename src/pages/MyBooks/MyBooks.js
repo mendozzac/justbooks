@@ -10,7 +10,6 @@ const MyBooks = () => {
 
   const removeFromFav = (id) => {
     const deleteBookToMyBooks = deleteBook(id);
-    console.log(id);
     return deleteBookToMyBooks;
   };
 
