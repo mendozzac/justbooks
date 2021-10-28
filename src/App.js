@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHatWizard } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
@@ -84,8 +85,11 @@ function App() {
                 activeClassName="current-section"
                 exact
                 onClick={resetHomepage}
-              >
-                <h1 className="logo">JustBooks</h1>
+              >  
+                <div className="text-center">
+                   <FontAwesomeIcon icon={faHatWizard} color="orange" size="2x"  aria-hidden="true" />
+                  <h1 className="logo text"> JustBooks </h1>
+                </div>  
               </NavLink>
               <NavLink
                 to="/mybooks"
@@ -111,6 +115,7 @@ function App() {
             </div>
           </div>
         </header>
+
         <main className="main-content">
           <div className="container main-container">
             <Switch>
