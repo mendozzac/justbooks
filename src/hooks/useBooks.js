@@ -3,11 +3,13 @@ import {
   createBookAction,
   loadBooksAction,
   loadBooksApiLocalAction,
+  deleteBookAction,
 } from "../store/actions/actionCreators";
 import BooksContext from "../store/contexts/BooksContext";
 
 const useBooks = (params) => {
   let { books, dispatch } = useContext(BooksContext);
+  const myApi = "https://justmybooks.herokuapp.com/mybooks";
 
   const loadBooks = useCallback(async () => {
     const bookUrl = `https://www.googleapis.com/books/v1/volumes${params}`;
@@ -17,7 +19,7 @@ const useBooks = (params) => {
   }, [dispatch, params]);
 
   const loadBooksApiLocal = useCallback(async () => {
-    const response = await fetch(`https://justmybooks.herokuapp.com/mybooks`);
+    const response = await fetch(myApi);
     const books = await response.json();
     dispatch(loadBooksApiLocalAction(books));
   }, [dispatch]);
@@ -37,11 +39,25 @@ const useBooks = (params) => {
     [dispatch]
   );
 
+  const deleteBook = useCallback(
+    async (id) => {
+      await fetch(`${myApi}/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      dispatch(deleteBookAction(id));
+    },
+    [dispatch]
+  );
+
   return {
     books,
     loadBooks,
     loadBooksApiLocal,
     createBook,
+    deleteBook,
   };
 };
 
