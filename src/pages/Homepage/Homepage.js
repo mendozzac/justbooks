@@ -38,15 +38,15 @@ const Homepage = ({ listado, title = "Our Books" }) => {
             />
           ))}
       </ul>
+
       <Navigation />
     </>
-  
-  ) : 
-  (<div>
+  ) : (
+    <div className="container text-center mt-5">
       <FontAwesomeIcon icon={faSpinner} spin />
-            <span className="sr-only">Loading...</span>
-          </div>) ;
-
+      <span className="sr-only">Loading...</span>
+    </div>
+  );
 };
 
 export default Homepage;
