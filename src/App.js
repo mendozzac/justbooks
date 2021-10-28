@@ -9,9 +9,7 @@ import {
 } from "react-router-dom";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHatWizard } from "@fortawesome/free-solid-svg-icons";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faHatWizard, faStar, faSearch } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import MyCart from "./pages/MyCart/MyCart";
 import SideBar from "./components/SideBar/SideBar";
@@ -19,6 +17,7 @@ import FormPage from "./pages/FormPage/FormPage";
 import Homepage from "./pages/Homepage/Homepage";
 import MyBooks from "./pages/MyBooks/MyBooks";
 import BooksContext from "./store/contexts/BooksContext";
+import useBooks from "./hooks/useBooks";
 
 function App() {
   const {
@@ -71,6 +70,14 @@ function App() {
       setListado(`?q=${query.current}${permanentQueries}`);
   };
 
+  const {createBook} = useBooks();
+
+  // const createBook = (book) => {
+  //   setBooks([
+  //     ...books, book
+  //   ]);
+  // };
+
   return (
     <>
       <Router>
@@ -91,6 +98,7 @@ function App() {
                   <h1 className="logo text"> JustBooks </h1>
                 </div>  
               </NavLink>
+              
               <NavLink
                 to="/mybooks"
                 activeClassName="current-section"
@@ -135,7 +143,7 @@ function App() {
                 <MyBooks />
               </Route>
               <Route path="/form" exact>
-                <FormPage />
+                <FormPage onSubmit={createBook}/>
               </Route>
             </Switch>
           </div>

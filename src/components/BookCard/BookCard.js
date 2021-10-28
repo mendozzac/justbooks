@@ -1,8 +1,6 @@
 import "./BookCard.scss";
 import Button from "../Button/Button";
 import { useLocation } from "react-router";
-//import { useContext } from "react";
-//import BooksContext from "../../store/contexts/BooksContext";
 
 const BookCard = ({ book, actionOnClick, addToFav }) => {
   const location = useLocation();
