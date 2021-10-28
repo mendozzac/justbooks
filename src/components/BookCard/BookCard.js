@@ -17,7 +17,7 @@ const BookCard = ({ book, actionOnClick, addToFav }) => {
             className="card__image"
             src={book.volumeInfo.imageLinks.thumbnail}
             alt={book.volumeInfo.title}
-            width="140"
+            width="150"
             height="210"
           ></img>
           <div className="card__content">
