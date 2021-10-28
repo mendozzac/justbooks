@@ -44,7 +44,7 @@ const Homepage = ({ listado, title = "Our Books" }) => {
   ) : 
   (<div>
       <FontAwesomeIcon icon={faSpinner} spin />
-            <span class="sr-only">Loading...</span>
+            <span className="sr-only">Loading...</span>
           </div>) ;
 
 };
