@@ -1,5 +1,9 @@
 import { useCallback, useContext } from "react";
-import { createBookAction, loadBooksAction, loadBooksApiLocalAction} from "../store/actions/actionCreators";
+import {
+  createBookAction,
+  loadBooksAction,
+  loadBooksApiLocalAction,
+} from "../store/actions/actionCreators";
 import BooksContext from "../store/contexts/BooksContext";
 
 const useBooks = (params) => {
@@ -16,21 +20,22 @@ const useBooks = (params) => {
     const response = await fetch(`https://justmybooks.herokuapp.com/mybooks`);
     const books = await response.json();
     dispatch(loadBooksApiLocalAction(books));
-    console.log(books);
   }, [dispatch]);
 
-  const createBook = useCallback(async (book, url) => {
-    const response = await fetch(url, {
-      method: "POST",     
-      body: JSON.stringify(book),
-      headers: {
-        "Content-Type" : "application/json"
-      },
-    });
-    book = await response.json();
-    dispatch(createBookAction(book))
-  },[dispatch])
-
+  const createBook = useCallback(
+    async (book, url) => {
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(book),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      book = await response.json();
+      dispatch(createBookAction(book));
+    },
+    [dispatch]
+  );
 
   return {
     books,
