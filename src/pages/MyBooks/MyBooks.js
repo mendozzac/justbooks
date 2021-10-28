@@ -6,6 +6,13 @@ import BookCard from "../../components/BookCard/BookCard";
 
 const MyBooks = () => {
   const { books, loadBooksApiLocal } = useBooks();
+  const { deleteBook } = useBooks();
+
+  const removeFromFav = (id) => {
+    const deleteBookToMyBooks = deleteBook(id);
+    console.log(id);
+    return deleteBookToMyBooks;
+  };
 
   useEffect(() => {
     loadBooksApiLocal();
@@ -24,6 +31,7 @@ const MyBooks = () => {
             book={book}
             actionOnClick={() => {}}
             addToFav={() => {}}
+            removeFromFav={removeFromFav}
           />
         ))}
       </div>

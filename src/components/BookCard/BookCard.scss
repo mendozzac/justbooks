@@ -3,6 +3,8 @@
   height: 380px;
   margin-bottom: 50px;
   border-style: none;
+  display: flex;
+  flex-wrap: wrap;
   &__content {
     margin-top: 5px;
     margin-bottom: 0;
