@@ -20,6 +20,7 @@ const MyBooks = () => {
   return (
     <>
       <h2>My Books</h2>
+      <p> Currently you have {books.length} favourite books you can buy. </p> 
       <NavLink to="/form" activeClassName="current-section" exact>
         <Button text="+" className="btn-warning mb-4" />
       </NavLink>
