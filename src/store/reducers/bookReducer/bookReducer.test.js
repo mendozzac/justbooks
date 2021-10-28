@@ -1,4 +1,7 @@
-import { loadBooksAction } from "../../actions/actionCreators";
+import {
+  deleteBookAction,
+  loadBooksAction,
+} from "../../actions/actionCreators";
 import booksReducer from "./booksReducer";
 import generateBooks from "../../../factories/generateBooks";
 
@@ -27,15 +30,14 @@ describe("Given a bookReducer function", () => {
   //   })
   // })
 
-  // describe("", ()=>{
-  //   test("", ()=>{
-  //     const Books=getBooks();
-  //     const bookToDelete= books[1];
-  //     const action=deleteBookAction(bookToDelete.id);
+  describe("When it receives a book", () => {
+    test("Then it removes the book from the list", () => {
+      const books = generateBooks();
+      const bookToDelete = books.items[1];
+      const action = deleteBookAction(bookToDelete.id);
 
-  //     const newBooks = booksReducer(books, action);
-  //     expect(newBooks).not.toContain(bookToDelete);
-
-  //   })
-  // })
+      const newBooks = booksReducer(books.items, action);
+      expect(newBooks).not.toContain(bookToDelete);
+    });
+  });
 });
