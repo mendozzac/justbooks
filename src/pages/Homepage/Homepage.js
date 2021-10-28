@@ -19,24 +19,38 @@ const Homepage = ({ listado, title = "Our Books" }) => {
     history.push(`/detail/${id}`);
   };
 
-  const addToFav = (book) => {
-    const url = "https://justmybooks.herokuapp.com/mybooks";
-    const addBookToMyBooks = createBook(book, url);
-    return addBookToMyBooks;
+  const addToFav = async (book, event) => {
+    const localApiResponse = await fetch(
+      "https://justmybooks.herokuapp.com/mybooks"
+    );
+    const localApiBooks = await localApiResponse.json();
+
+    const favedIds = [];
+    localApiBooks.forEach((apiBook) => {
+      favedIds.push(apiBook.id);
+    });
+
+    const isDuplicate = favedIds.some((bookId) => bookId === book.id);
+
+    if (!isDuplicate) {
+      const url = "https://justmybooks.herokuapp.com/mybooks";
+      const addBookToMyBooks = createBook(book, url);
+      return addBookToMyBooks;
+    }
   };
 
   return books.length ? (
     <>
       <h2>{title}</h2>
       <ul className="booklist">
-          {books.map((book) => (
-            <BookCard
-              key={book.id}
-              book={book}
-              actionOnClick={() => goToBookDetail(book.id)}
-              addToFav={addToFav}
-            />
-          ))}
+        {books.map((book) => (
+          <BookCard
+            key={book.id}
+            book={book}
+            actionOnClick={() => goToBookDetail(book.id)}
+            addToFav={addToFav}
+          />
+        ))}
       </ul>
 
       <Navigation />
