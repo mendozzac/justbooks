@@ -29,24 +29,23 @@ const Homepage = ({ listado, title = "Our Books" }) => {
     <>
       <h2>{title}</h2>
       <div className="booklist">
-          {books.map((book) => (
-            <BookCard
-              key={book.id}
-              book={book}
-              actionOnClick={() => goToBookDetail(book.id)}
-              addToFav={addToFav}
-            />
-          ))}
+        {books.map((book) => (
+          <BookCard
+            key={book.id}
+            book={book}
+            actionOnClick={() => goToBookDetail(book.id)}
+            addToFav={addToFav}
+          />
+        ))}
       </div>
       <Navigation />
     </>
-  
-  ) : 
-  (<div>
+  ) : (
+    <div className="container text-center mt-5">
       <FontAwesomeIcon icon={faSpinner} spin />
-            <span className="sr-only">Loading...</span>
-          </div>) ;
-
+      <span className="sr-only">Loading...</span>
+    </div>
+  );
 };
 
 export default Homepage;
