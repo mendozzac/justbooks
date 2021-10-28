@@ -40,7 +40,7 @@ const BookCard = ({ book, actionOnClick, addToFav, removeFromFav }) => {
           actionOnClick={
             location.pathname === "/mybooks"
               ? () => removeFromFav(book.id)
-              : () => addToFav(book)
+              : (event) => addToFav(book, event)
           }
         />
       </li>
