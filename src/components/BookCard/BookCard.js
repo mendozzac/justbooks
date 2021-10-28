@@ -5,7 +5,7 @@ import { useLocation } from "react-router";
 const BookCard = ({ book, actionOnClick, addToFav, removeFromFav }) => {
   const location = useLocation();
   const buttonText =
-    location.pathname === "/mybooks" ? "Remove" : "Add to favs";
+    location.pathname === "/mybooks" ? "Remove" : "Add to Favs";
 
   return (
     <>

@@ -17,7 +17,6 @@ import FormPage from "./pages/FormPage/FormPage";
 import Homepage from "./pages/Homepage/Homepage";
 import MyBooks from "./pages/MyBooks/MyBooks";
 import BooksContext from "./store/contexts/BooksContext";
-import useBooks from "./hooks/useBooks";
 
 function App() {
   const {
@@ -70,14 +69,6 @@ function App() {
       setListado(`?q=${query.current}${permanentQueries}`);
   };
 
-  const {createBook} = useBooks();
-
-  // const createBook = (book) => {
-  //   setBooks([
-  //     ...books, book
-  //   ]);
-  // };
-
   return (
     <>
       <Router>
@@ -92,11 +83,16 @@ function App() {
                 activeClassName="current-section"
                 exact
                 onClick={resetHomepage}
-              >  
+              >
                 <div className="text-center">
-                   <FontAwesomeIcon icon={faHatWizard} color="orange" size="2x"  aria-hidden="true" />
+                  <FontAwesomeIcon
+                    icon={faHatWizard}
+                    color="orange"
+                    size="2x"
+                    aria-hidden="true"
+                  />
                   <h1 className="logo text"> JustBooks </h1>
-                </div>  
+                </div>
               </NavLink>
               
               <NavLink
@@ -143,7 +139,7 @@ function App() {
                 <MyBooks />
               </Route>
               <Route path="/form" exact>
-                <FormPage onSubmit={createBook}/>
+                <FormPage />
               </Route>
             </Switch>
           </div>
