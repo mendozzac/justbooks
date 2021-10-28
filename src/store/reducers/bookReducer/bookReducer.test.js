@@ -1,6 +1,6 @@
 import { loadBooksAction } from "../../actions/actionCreators";
 import booksReducer from "./booksReducer";
-import generateBooks from "../../../factories/bookFactory";
+import generateBooks from "../../../factories/generateBooks";
 
 describe("Given a bookReducer function", () => {
   describe("When it receives a list of books and an action to load books", () => {
