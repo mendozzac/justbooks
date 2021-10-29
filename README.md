@@ -2,27 +2,29 @@
 
 Páginas:
 
-- Homepage/categoría
+- HOMEPAGE/categoría:
 
-- Carrito
+  - recibe un listado de objetos book (de la api google-books) y renderiza un componente BookCard para cada elemento
+  - recibe un titulo y lo renderiza
+  - renderiza los botones de paginacion
 
-- Detalle
+- DETAILPAGE:
 
-- Mis libros
+  - recibe un objeto book y lo renderiza
 
-- Formulario
+- MYBOOKS:
+
+  - renderiza componentes book (de la api local)
+  - recibe funcion: podemos ir a la pagina del formulario
+
+- FORMPAGE:
+  - renderiza los inputs del formulario,
+  - recoge los inputs del usuario,
+  - submitea un objeto book a la api local
 
 Componentes:
 
-- Comunes a todas las páginas:
-  Header
-  Search: Recoger un input del usuario tipo texto y realizar una función recibida
-  Renderiza el logo, un botón de carrito, un botón de menu y el search.
-  Footer
-
 - BookCard
-  Homepage/categoría
-  Mis libros
 
   - Recibe un objeto de libro.
   - Renderiza una foto, un título, autor y precio.
@@ -37,10 +39,13 @@ Componentes:
 
   - Renderizar un listado de enlaces, que ejecutan una función
 
-- Listado de libros
-
-  - Recibe un listado de libros y renderiza un componente BookCard por cada elemento
-
 - Paginado
+
   - Recibe un enlace y lo manipula.
   - Ejecuta una función
+
+- Footer
+
+Comunes a todas las páginas: Header, Footer y Search.
+Search: recoge un input del usuario tipo texto y realiza una función recibida,
+renderiza el logo, un botón de menu y el search.
