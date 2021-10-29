@@ -40,9 +40,9 @@ h1:hover {
 .booklist {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 130px);
+  grid-template-columns: repeat(auto-fill, 150px);
   justify-content: space-between;
-  grid-gap: 20px;
+  grid-gap: 5px;
   margin-left: 0;
   padding-left: 0;
 }
