@@ -39,27 +39,31 @@ const Homepage = ({ listado, title = "Our Books" }) => {
     }
   };
 
-  return books.length ? (
-    <>
-      <h2>{title}</h2>
-      <ul className="booklist">
-        {books.map((book) => (
-          <BookCard
-            key={book.id}
-            book={book}
-            actionOnClick={() => goToBookDetail(book.id)}
-            addToFav={addToFav}
-          />
-        ))}
-      </ul>
+  return books ? (
+    books.length ? (
+      <>
+        <h2>{title}</h2>
+        <ul className="booklist">
+          {books.map((book) => (
+            <BookCard
+              key={book.id}
+              book={book}
+              actionOnClick={() => goToBookDetail(book.id)}
+              addToFav={addToFav}
+            />
+          ))}
+        </ul>
 
-      <Navigation />
-    </>
+        <Navigation />
+      </>
+    ) : (
+      <div className="container text-center mt-5">
+        <FontAwesomeIcon icon={faSpinner} spin />
+        <span className="sr-only">Loading...</span>
+      </div>
+    )
   ) : (
-    <div className="container text-center mt-5">
-      <FontAwesomeIcon icon={faSpinner} spin />
-      <span className="sr-only">Loading...</span>
-    </div>
+    <div className="text-center mt-5">No results</div>
   );
 };
 
