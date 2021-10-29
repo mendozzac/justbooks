@@ -9,7 +9,7 @@ const BookCard = ({ book, actionOnClick, addToFav, removeFromFav }) => {
 
   return (
     <>
-      <div className="card">
+      <li className="card">
         <div onClick={actionOnClick}>
           <img
             className="card__image"
@@ -43,7 +43,7 @@ const BookCard = ({ book, actionOnClick, addToFav, removeFromFav }) => {
               : () => addToFav(book)
           }
         />
-      </div>
+      </li>
     </>
   );
 };

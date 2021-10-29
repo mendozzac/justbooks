@@ -28,7 +28,7 @@ const MyBooks = () => {
 
       <p> Currently you have {books.length} favourite books you can buy. </p>
 
-      <div className="booklist">
+      <ul className="booklist">
         {books.map((book) => (
           <BookCard
             key={book.id}
@@ -38,7 +38,7 @@ const MyBooks = () => {
             removeFromFav={removeFromFav}
           />
         ))}
-      </div>
+      </ul>
     </>
   );
 };
