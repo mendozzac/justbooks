@@ -2,6 +2,7 @@ import "./FormPage.scss";
 import Button from "../../components/Button/Button";
 import { useState } from "react";
 import useBooks from "../../hooks/useBooks";
+import { Redirect } from "react-router-dom";
 
 const FormPage = () => {
   const { createBook } = useBooks();
@@ -70,6 +71,8 @@ const FormPage = () => {
     createBook(newBook, url);
 
     resetForm();
+
+    return <Redirect to="/mybooks" />;
   };
 
   return (
@@ -143,6 +146,7 @@ const FormPage = () => {
             onChange={changeData}
           />
         </div>
+
         <Button
           text="Add Book"
           className="addBookButton"
