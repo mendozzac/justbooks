@@ -23,6 +23,13 @@ h1:hover {
   width: 100%;
 }
 
+.list-group-item {
+  cursor: pointer;
+  &:hover {
+    font-weight: 600;
+  }
+}
+
 .booklist {
   width: 100%;
   display: grid;
