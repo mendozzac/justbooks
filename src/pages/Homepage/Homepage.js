@@ -19,16 +19,31 @@ const Homepage = ({ listado, title = "Our Books" }) => {
     history.push(`/detail/${id}`);
   };
 
-  const addToFav = (book) => {
-    const url = "https://justmybooks.herokuapp.com/mybooks";
-    const addBookToMyBooks = createBook(book, url);
-    return addBookToMyBooks;
+  const addToFav = async (book, event) => {
+    const localApiResponse = await fetch(
+      "https://justmybooks.herokuapp.com/mybooks"
+    );
+    const localApiBooks = await localApiResponse.json();
+
+    const favedIds = [];
+    localApiBooks.forEach((apiBook) => {
+      favedIds.push(apiBook.id);
+    });
+
+    const isDuplicate = favedIds.some((bookId) => bookId === book.id);
+
+    if (!isDuplicate) {
+      const url = "https://justmybooks.herokuapp.com/mybooks";
+      const addBookToMyBooks = createBook(book, url);
+      return addBookToMyBooks;
+    }
   };
 
-  return books.length ? (
-    <>
-      <h2>{title}</h2>
-      <ul className="booklist">
+  return books ? (
+    books.length ? (
+      <>
+        <h2>{title}</h2>
+        <ul className="booklist">
           {books.map((book) => (
             <BookCard
               key={book.id}
@@ -37,15 +52,18 @@ const Homepage = ({ listado, title = "Our Books" }) => {
               addToFav={addToFav}
             />
           ))}
-      </ul>
+        </ul>
 
-      <Navigation />
-    </>
+        <Navigation />
+      </>
+    ) : (
+      <div className="container text-center mt-5">
+        <FontAwesomeIcon icon={faSpinner} spin />
+        <span className="sr-only">Loading...</span>
+      </div>
+    )
   ) : (
-    <div className="container text-center mt-5">
-      <FontAwesomeIcon icon={faSpinner} spin />
-      <span className="sr-only">Loading...</span>
-    </div>
+    <div className="text-center mt-5">No results</div>
   );
 };
 
