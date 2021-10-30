@@ -80,6 +80,15 @@ function App() {
       setListado(`?q=${query.current}${permanentQueries}`);
   };
 
+  const loadBooksByCategory = (event) => {
+    event.preventDefault();
+    const newSearchByCategory = event.target.getAttribute("href"); 
+    query.current = newSearchByCategory;
+    setTitle(newSearchByCategory);
+    resetIndex();
+    setListado(`?q=${query.current}${permanentQueries}`);
+  }
+  
   const onSubmitAction = (event) => {
     event.preventDefault();
     search();
@@ -92,7 +101,7 @@ function App() {
           <div className="container header-container">
             <div className="topLinks">
               <nav className="header__burger">
-                <SideBar />
+                <SideBar actionOnClick={loadBooksByCategory}/>
               </nav>
               <NavLink
                 to="/home"
