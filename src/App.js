@@ -9,7 +9,11 @@ import {
 } from "react-router-dom";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHatWizard, faStar, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHatWizard,
+  faStar,
+  faSearch,
+} from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import MyCart from "./pages/MyCart/MyCart";
 import SideBar from "./components/SideBar/SideBar";
@@ -77,6 +81,11 @@ function App() {
     resetIndex();
     setListado(`?q=${query.current}${permanentQueries}`);
   }
+  
+  const onSubmitAction = (event) => {
+    event.preventDefault();
+    search();
+  };
 
   return (
     <>
@@ -103,7 +112,7 @@ function App() {
                   <h1 className="logo text"> JustBooks </h1>
                 </div>
               </NavLink>
-              
+
               <NavLink
                 to="/mybooks"
                 activeClassName="current-section"
@@ -113,19 +122,20 @@ function App() {
                 <FontAwesomeIcon icon={faStar} />
               </NavLink>
             </div>
-
-            <div className="search-bar">
-              <input
-                className="search-bar__input"
-                type="text"
-                value={searchInput}
-                onChange={handleChange}
-                placeholder="Search..."
-              />
-              <div className="search-button" onClick={search}>
-                <FontAwesomeIcon icon={faSearch} />
+            <form onSubmit={(event) => onSubmitAction(event)}>
+              <div className="search-bar">
+                <input
+                  className="search-bar__input"
+                  type="text"
+                  value={searchInput}
+                  onChange={handleChange}
+                  placeholder="Search..."
+                />
+                <div className="search-button" onClick={search}>
+                  <FontAwesomeIcon icon={faSearch} />
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </header>
 
