@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Given a BookCard component When it recives and object then it should render a card with the object info inside 1`] = `
+<li
+  className="card"
+>
+  <div>
+    <img
+      alt="Forward Mobility Analyst"
+      className="card__image"
+      height="210"
+      src="http://placeimg.com/640/480/food"
+      width="150"
+    />
+    <div
+      className="card__content"
+    >
+      <h3
+        className="card__title"
+      >
+        Forward Mobility Analyst
+      </h3>
+      <p
+        className="card__author"
+      >
+         
+        NataliaHeathcote
+         
+      </p>
+       
+      <p
+        className="card__price"
+      >
+         
+        0.00€
+         
+      </p>
+    </div>
+  </div>
+  <button
+    className="btn button btn-warning card__fav-button"
+    disabled={false}
+    onClick={[Function]}
+  >
+    Add to Favs
+  </button>
+</li>
+`;
