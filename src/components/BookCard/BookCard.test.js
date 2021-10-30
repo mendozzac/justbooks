@@ -50,8 +50,24 @@ describe("Given a BookCard component", () => {
 
   describe("When it recives and object", () => {
     test("then it should render a card with the object info inside", () => {
-      const books = generateBooks();
-      const newBook = mapFrom(books.items[0]);
+      const newBook = {
+        volumeInfo: {
+          title: "Harry",
+          authors: ["Potter"],
+          publisher: "Magia",
+          description: "It's okay",
+          pageCount: "100000",
+          imageLinks: {
+            thumbnail:
+              "https://pbs.twimg.com/profile_images/3604358312/e784593ed966bc42476eab53261b8b09_400x400.jpeg",
+          },
+        },
+        saleInfo: {
+          listPrice: {
+            amount: "0.00",
+          },
+        },
+      };
 
       const history = createMemoryHistory();
       const route = "/home";
