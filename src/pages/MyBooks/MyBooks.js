@@ -17,29 +17,43 @@ const MyBooks = () => {
     loadBooksApiLocal();
   }, [loadBooksApiLocal]);
 
-  return (
-    <>
-      <div className="header-subtitle container">
-        <h2>My Books</h2>
-        <NavLink to="/form" activeClassName="current-section" exact>
-          <Button text="+" className="btn-warning" />
-        </NavLink>
-      </div>
+  return books ? (
+    books.length ? (
+      <>
+        <div className="header-subtitle container">
+          <h2>My Books</h2>
+          <NavLink to="/form" activeClassName="current-section" exact>
+            <Button text="+" className="btn-warning" />
+          </NavLink>
+        </div>
 
-      <p> Currently you have {books.length} favourite books you can buy. </p>
+        <p> Currently you have {books.length} favourite books you can buy. </p>
 
-      <ul className="booklist">
-        {books.map((book) => (
-          <BookCard
-            key={book.id}
-            book={book}
-            actionOnClick={() => {}}
-            addToFav={() => {}}
-            removeFromFav={removeFromFav}
-          />
-        ))}
-      </ul>
-    </>
+        <ul className="booklist">
+          {books.map((book) => (
+            <BookCard
+              key={book.id}
+              book={book}
+              actionOnClick={() => {}}
+              addToFav={() => {}}
+              removeFromFav={removeFromFav}
+            />
+          ))}
+        </ul>
+      </>
+    ) : (
+      <>
+        <div className="header-subtitle container">
+          <h2>My Books</h2>
+          <NavLink to="/form" activeClassName="current-section" exact>
+            <Button text="+" className="btn-warning" />
+          </NavLink>
+        </div>
+        <p> Currently you have {books.length} favourite books you can buy. </p>
+      </>
+    )
+  ) : (
+    <div className="text-center mt-5">No results</div>
   );
 };
 

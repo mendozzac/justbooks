@@ -13,7 +13,9 @@ import {
   faHatWizard,
   faStar,
   faSearch,
+
   faUser,
+
 } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import MyCart from "./pages/MyCart/MyCart";
@@ -78,6 +80,11 @@ function App() {
       setListado(`?q=${query.current}${permanentQueries}`);
   };
 
+  const onSubmitAction = (event) => {
+    event.preventDefault();
+    search();
+  };
+
   return (
     <>
       <Router>
@@ -103,11 +110,13 @@ function App() {
                   <h1 className="logo text"> JustBooks </h1>
                 </div>
               </NavLink>
+
               <FontAwesomeIcon icon={faUser}>
                 {" "}
                 <LoginButton />{" "}
               </FontAwesomeIcon>
               {isAuthenticated && <LogoutButton />}
+
               <NavLink
                 to="/mybooks"
                 activeClassName="current-section"
@@ -117,19 +126,20 @@ function App() {
                 <FontAwesomeIcon icon={faStar} />
               </NavLink>
             </div>
-
-            <div className="search-bar">
-              <input
-                className="search-bar__input"
-                type="text"
-                value={searchInput}
-                onChange={handleChange}
-                placeholder="Search..."
-              />
-              <div className="search-button" onClick={search}>
-                <FontAwesomeIcon icon={faSearch} />
+            <form onSubmit={(event) => onSubmitAction(event)}>
+              <div className="search-bar">
+                <input
+                  className="search-bar__input"
+                  type="text"
+                  value={searchInput}
+                  onChange={handleChange}
+                  placeholder="Search..."
+                />
+                <div className="search-button" onClick={search}>
+                  <FontAwesomeIcon icon={faSearch} />
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </header>
 
