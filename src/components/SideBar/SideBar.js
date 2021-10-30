@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const SideBar = () => {
+const SideBar = ({actionOnClick}) => {
   return (
     <>
       <div className="dropdown">
@@ -22,23 +22,20 @@ const SideBar = () => {
           </li>
           <li className="dropdown-item">
             <ul className="sidebar__categories list-group">
-              <li className="list-group-item">Art</li>
-              <li className="list-group-item">Biography</li>
-              <li className="list-group-item">Children's Books</li>
-              <li className="list-group-item">Crafts & Hobbies</li>
-              <li className="list-group-item">Crime & Thriller</li>
-              <li className="list-group-item">Dictionaries</li>
-              <li className="list-group-item">Fiction</li>
-              <li className="list-group-item">Graphic Novels</li>
-              <li className="list-group-item">History</li>
-              <li className="list-group-item">Spirituality</li>
-              <li className="list-group-item">Poetry</li>
-              <li className="list-group-item">Romance</li>
-              <li className="list-group-item">Science</li>
-              <li className="list-group-item">Sport</li>
-              <li className="list-group-item">Technology</li>
-              <li className="list-group-item">Teen & Young Adult</li>
-              <li className="list-group-item">Travel</li>
+              <li className="list-group-item"> <a href="Art" onClick={actionOnClick}> Art </a> </li>
+              <li className="list-group-item"> <a href="Cooking" onClick={actionOnClick}> Cooking </a> </li>
+              <li className="list-group-item"> <a href="Crafts & Hobbies" onClick={actionOnClick}> Crafts & Hobbies </a> </li>
+              <li className="list-group-item"> <a href="Drama" onClick={actionOnClick}> Drama </a> </li>
+              <li className="list-group-item"> <a href="Education" onClick={actionOnClick}> Education </a> </li>
+              <li className="list-group-item"> <a href="Fiction" onClick={actionOnClick}> Fiction </a> </li>
+              <li className="list-group-item"> <a href="Gardening" onClick={actionOnClick}> Gardening </a> </li>
+              <li className="list-group-item"> <a href="History" onClick={actionOnClick}> History </a> </li>
+              <li className="list-group-item"> <a href="Poetry" onClick={actionOnClick}> Poetry </a> </li>
+              <li className="list-group-item"> <a href="Romance" onClick={actionOnClick}> Romance </a> </li>
+              <li className="list-group-item"> <a href="Science" onClick={actionOnClick}> Science </a> </li>
+              <li className="list-group-item"> <a href="Sport" onClick={actionOnClick}> Sport </a> </li>
+              <li className="list-group-item"> <a href="Technology" onClick={actionOnClick}> Technology </a></li>
+              <li className="list-group-item"> <a href="Travel" onClick={actionOnClick}> Travel </a> </li>
             </ul>
           </li>
         </ul>
