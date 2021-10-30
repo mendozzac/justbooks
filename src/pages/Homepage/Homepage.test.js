@@ -1,8 +1,7 @@
 import Homepage from "./Homepage";
 import { server } from "../../mocks/server";
 import { render, screen, waitFor } from "@testing-library/react";
-import { Router } from "react-router-dom";
-import { createMemoryHistory } from "history";
+import { MemoryRouter } from "react-router-dom";
 
 import BooksContextProvider from "../../store/contexts/BooksContextProvider";
 
@@ -21,18 +20,14 @@ afterAll(() => {
 describe("Given a Homepage component", () => {
   describe("When it's rendered", () => {
     test("Then it should show the names of the books and their authors", async () => {
-      const history = createMemoryHistory();
-      const route = "/home";
-      history.push(route);
-
       render(
         <BooksContextProvider>
-          <Router history={history}>
+          <MemoryRouter initialEntries={["/home"]}>
             <Homepage
               listado={`&printType=books&filter=paid-ebooks&startIndex=0&maxResults=10&langRestrict=en`}
               title={"Our Books"}
             />
-          </Router>
+          </MemoryRouter>
         </BooksContextProvider>
       );
 
