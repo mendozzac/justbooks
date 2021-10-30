@@ -6,10 +6,10 @@ exports[`Given a BookCard component When it recives and object then it should re
 >
   <div>
     <img
-      alt="Forward Mobility Analyst"
+      alt="Harry"
       className="card__image"
       height="210"
-      src="http://placeimg.com/640/480/food"
+      src="https://pbs.twimg.com/profile_images/3604358312/e784593ed966bc42476eab53261b8b09_400x400.jpeg"
       width="150"
     />
     <div
@@ -18,13 +18,13 @@ exports[`Given a BookCard component When it recives and object then it should re
       <h3
         className="card__title"
       >
-        Forward Mobility Analyst
+        Harry
       </h3>
       <p
         className="card__author"
       >
          
-        NataliaHeathcote
+        Potter
          
       </p>
        
