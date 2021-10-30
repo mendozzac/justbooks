@@ -2,7 +2,7 @@ import { rest } from "msw";
 
 export const handlers = [
   rest.get(
-    "https://www.googleapis.com/books/v1/volumes&printType=books&filter=paid-ebooks&startIndex=0&maxResults=${maxResults}&langRestrict=en",
+    "https://www.googleapis.com/books/v1/volumes&printType=books&filter=paid-ebooks&startIndex=0&maxResults=10&langRestrict=en",
     async (req, res, ctx) => {
       const resp = res(
         ctx.json({
