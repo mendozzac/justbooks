@@ -7,11 +7,18 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import BooksContextProvider from "./store/contexts/BooksContextProvider";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 ReactDOM.render(
   <React.StrictMode>
     <BooksContextProvider>
-      <App />
+      <Auth0Provider
+        domain={process.env.REACT_APP_LOGIN_DOMAIN}
+        clientId={process.env.REACT_APP_LOGIN_CLIENT_ID}
+        redirectUri={window.location.origin}
+      >
+        <App />
+      </Auth0Provider>
     </BooksContextProvider>
   </React.StrictMode>,
   document.getElementById("root")

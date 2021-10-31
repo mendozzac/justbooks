@@ -9,7 +9,14 @@ import {
 } from "react-router-dom";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHatWizard, faStar, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHatWizard,
+  faStar,
+  faSearch,
+
+  faUser,
+
+} from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import MyCart from "./pages/MyCart/MyCart";
 import SideBar from "./components/SideBar/SideBar";
@@ -17,8 +24,12 @@ import FormPage from "./pages/FormPage/FormPage";
 import Homepage from "./pages/Homepage/Homepage";
 import MyBooks from "./pages/MyBooks/MyBooks";
 import BooksContext from "./store/contexts/BooksContext";
+import LoginButton from "./auth0/LoginButton/LoginButton";
+import { useAuth0 } from "@auth0/auth0-react";
+import LogoutButton from "./auth0/LogoutButton/LogoutButton";
 
 function App() {
+  const { isAuthenticated } = useAuth0();
   const {
     page,
     startIndex,
@@ -69,6 +80,20 @@ function App() {
       setListado(`?q=${query.current}${permanentQueries}`);
   };
 
+  const loadBooksByCategory = (event) => {
+    event.preventDefault();
+    const newSearchByCategory = event.target.getAttribute("href"); 
+    query.current = newSearchByCategory;
+    setTitle(newSearchByCategory);
+    resetIndex();
+    setListado(`?q=${query.current}${permanentQueries}`);
+  }
+  
+  const onSubmitAction = (event) => {
+    event.preventDefault();
+    search();
+  };
+
   return (
     <>
       <Router>
@@ -76,7 +101,7 @@ function App() {
           <div className="container header-container">
             <div className="topLinks">
               <nav className="header__burger">
-                <SideBar />
+                <SideBar actionOnClick={loadBooksByCategory}/>
               </nav>
               <NavLink
                 to="/home"
@@ -94,7 +119,13 @@ function App() {
                   <h1 className="logo text"> JustBooks </h1>
                 </div>
               </NavLink>
-              
+
+              <FontAwesomeIcon icon={faUser}>
+                {" "}
+                <LoginButton />{" "}
+              </FontAwesomeIcon>
+              {isAuthenticated && <LogoutButton />}
+
               <NavLink
                 to="/mybooks"
                 activeClassName="current-section"
@@ -104,19 +135,20 @@ function App() {
                 <FontAwesomeIcon icon={faStar} />
               </NavLink>
             </div>
-
-            <div className="search-bar">
-              <input
-                className="search-bar__input"
-                type="text"
-                value={searchInput}
-                onChange={handleChange}
-                placeholder="Search..."
-              />
-              <div className="search-button" onClick={search}>
-                <FontAwesomeIcon icon={faSearch} />
+            <form onSubmit={(event) => onSubmitAction(event)}>
+              <div className="search-bar">
+                <input
+                  className="search-bar__input"
+                  type="text"
+                  value={searchInput}
+                  onChange={handleChange}
+                  placeholder="Search..."
+                />
+                <div className="search-button" onClick={search}>
+                  <FontAwesomeIcon icon={faSearch} />
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </header>
 
