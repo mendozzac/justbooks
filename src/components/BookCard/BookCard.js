@@ -1,6 +1,7 @@
 import "./BookCard.scss";
 import Button from "../Button/Button";
 import { useLocation } from "react-router";
+import PropTypes from "prop-types";
 
 const BookCard = ({ book, actionOnClick, addToFav, removeFromFav }) => {
   const location = useLocation();
@@ -46,6 +47,13 @@ const BookCard = ({ book, actionOnClick, addToFav, removeFromFav }) => {
       </li>
     </>
   );
+};
+
+BookCard.propTypes = {
+  book: PropTypes.object.isRequired,
+  actionOnClick: PropTypes.func,
+  addToFav: PropTypes.func,
+  removeFromFav: PropTypes.func,
 };
 
 export default BookCard;
