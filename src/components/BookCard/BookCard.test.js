@@ -1,8 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import BookCard from "./BookCard.js";
 import generateBooks from "../../factories/generateBooks";
-import { Router } from "react-router-dom";
-import { createMemoryHistory } from "history";
+import { MemoryRouter } from "react-router-dom";
 import ReactTestRenderer from "react-test-renderer";
 
 describe("Given a BookCard component", () => {
@@ -33,14 +32,10 @@ describe("Given a BookCard component", () => {
       const books = generateBooks();
       const newBook = mapFrom(books.items[0]);
 
-      const history = createMemoryHistory();
-      const route = "/home";
-      history.push(route);
-
       render(
-        <Router history={history}>
+        <MemoryRouter initialEntries={["/home"]}>
           <BookCard book={newBook} />
-        </Router>
+        </MemoryRouter>
       );
       const bookCard = screen.getByRole("listitem");
 
@@ -69,14 +64,10 @@ describe("Given a BookCard component", () => {
         },
       };
 
-      const history = createMemoryHistory();
-      const route = "/home";
-      history.push(route);
-
       const cardComponent = ReactTestRenderer.create(
-        <Router history={history}>
+        <MemoryRouter initialEntries={["/home"]}>
           <BookCard book={newBook} />
-        </Router>
+        </MemoryRouter>
       );
       expect(cardComponent.toJSON()).toMatchSnapshot();
     });

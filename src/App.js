@@ -13,7 +13,6 @@ import {
   faHatWizard,
   faStar,
   faSearch,
-  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import SideBar from "./components/SideBar/SideBar";
@@ -116,21 +115,22 @@ function App() {
                   <h1 className="logo text"> JustBooks </h1>
                 </div>
               </NavLink>
-
-              <FontAwesomeIcon icon={faUser}>
-                {" "}
-                <LoginButton />{" "}
-              </FontAwesomeIcon>
-              {isAuthenticated && <LogoutButton />}
-
-              <NavLink
-                to="/mybooks"
-                activeClassName="current-section"
-                exact
-                className="cart-button"
-              >
-                <FontAwesomeIcon icon={faStar} />
-              </NavLink>
+              <div className="login-box">
+                <LoginButton className="login-box--element" />
+                {isAuthenticated && (
+                  <LogoutButton className="login-box--element" />
+                )}
+                {isAuthenticated && (
+                  <NavLink
+                    to="/mybooks"
+                    activeClassName="current-section"
+                    exact
+                    className="cart-button"
+                  >
+                    <FontAwesomeIcon icon={faStar} />
+                  </NavLink>
+                )}
+              </div>
             </div>
             <form onSubmit={(event) => onSubmitAction(event)}>
               <div className="search-bar">
