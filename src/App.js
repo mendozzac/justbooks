@@ -13,12 +13,9 @@ import {
   faHatWizard,
   faStar,
   faSearch,
-
   faUser,
-
 } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
-import MyCart from "./pages/MyCart/MyCart";
 import SideBar from "./components/SideBar/SideBar";
 import FormPage from "./pages/FormPage/FormPage";
 import Homepage from "./pages/Homepage/Homepage";
@@ -82,13 +79,13 @@ function App() {
 
   const loadBooksByCategory = (event) => {
     event.preventDefault();
-    const newSearchByCategory = event.target.getAttribute("href"); 
+    const newSearchByCategory = event.target.getAttribute("href");
     query.current = newSearchByCategory;
     setTitle(newSearchByCategory);
     resetIndex();
     setListado(`?q=${query.current}${permanentQueries}`);
-  }
-  
+  };
+
   const onSubmitAction = (event) => {
     event.preventDefault();
     search();
@@ -101,7 +98,7 @@ function App() {
           <div className="container header-container">
             <div className="topLinks">
               <nav className="header__burger">
-                <SideBar actionOnClick={loadBooksByCategory}/>
+                <SideBar actionOnClick={loadBooksByCategory} />
               </nav>
               <NavLink
                 to="/home"
@@ -163,9 +160,6 @@ function App() {
               </Route>
               <Route path="/detail/:id" exact>
                 <DetailPage />
-              </Route>
-              <Route path="/cart" exact>
-                <MyCart />
               </Route>
               <Route path="/mybooks" exact>
                 <MyBooks />
