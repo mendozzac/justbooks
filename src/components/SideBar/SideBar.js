@@ -1,3 +1,6 @@
+
+import PropTypes from "prop-types";
+
 const SideBar = ({ actionOnClick }) => {
   return (
     <>
@@ -119,6 +122,10 @@ const SideBar = ({ actionOnClick }) => {
       </div>
     </>
   );
+};
+
+SideBar.propTypes = {
+  actionOnClick: PropTypes.func,
 };
 
 export default SideBar;
