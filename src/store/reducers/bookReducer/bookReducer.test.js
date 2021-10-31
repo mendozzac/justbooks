@@ -32,8 +32,6 @@ describe("Given a bookReducer function", () => {
       const action = createBookAction(newBook);
 
       const newBooks = booksReducer(books, action);
-      console.log(newBooks);
-      console.log(newBook);
 
       expect(newBooks).toContain(newBook);
     });

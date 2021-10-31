@@ -7,7 +7,6 @@ const booksReducer = (books, action) => {
     newBooks = action.books.items && [...action.books.items];
   } else if (action.type === actionTypes.loadBooksApiLocal) {
     newBooks = action.books && [...action.books];
-    console.log(newBooks);
   } else if (action.type === actionTypes.createBook) {
     newBooks = [...books];
   } else if (action.type === actionTypes.deleteBook) {

@@ -56,6 +56,7 @@ export const handlers = [
       const resp = res(
         ctx.json([
           {
+            id: 1,
             volumeInfo: {
               title: "Harry",
               authors: ["Potter"],
@@ -74,6 +75,7 @@ export const handlers = [
             },
           },
           {
+            id: 2,
             volumeInfo: {
               title: "Harriett",
               authors: ["Potty"],
@@ -92,6 +94,14 @@ export const handlers = [
           },
         ])
       );
+      return resp;
+    }
+  ),
+
+  rest.delete(
+    "https://justmybooks.herokuapp.com/mybooks:id",
+    async (req, res, ctx) => {
+      const resp = res(ctx.status(200), ctx.json({}));
       return resp;
     }
   ),
