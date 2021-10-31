@@ -18,12 +18,16 @@ const Navigation = () => {
       <nav aria-label="...">
         <ul className="pagination pagination-lg">
           <li className="page-item ">
-
-            <Button className="pagination-button btn btn-secondary carousel-control-prev-icon" actionOnClick={previousPage} />
+            <Button
+              className="pagination-button btn btn-secondary carousel-control-prev-icon"
+              actionOnClick={previousPage}
+            />
           </li>
           <li className="page-item">
-            <Button className="pagination-button btn btn-secondary carousel-control-next-icon" actionOnClick={nextPage} />
-
+            <Button
+              className="pagination-button btn btn-secondary carousel-control-next-icon"
+              actionOnClick={nextPage}
+            />
           </li>
         </ul>
       </nav>
