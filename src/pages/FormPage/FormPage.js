@@ -21,7 +21,6 @@ const FormPage = () => {
 
   const checkForm = () => {
     if (
-      bookData.image !== "" &&
       bookData.title !== "" &&
       bookData.author !== "" &&
       bookData.publisher !== "" &&
@@ -116,7 +115,7 @@ const FormPage = () => {
         <div className="form-group">
           <label htmlFor="pages">Pages:</label>
           <input
-            type="text"
+            type="number"
             id="pages"
             value={bookData.pages}
             className="form-control"
