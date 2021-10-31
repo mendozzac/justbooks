@@ -13,6 +13,9 @@ import {
   faHatWizard,
   faStar,
   faSearch,
+
+  faUser,
+
 } from "@fortawesome/free-solid-svg-icons";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import MyCart from "./pages/MyCart/MyCart";
@@ -21,8 +24,12 @@ import FormPage from "./pages/FormPage/FormPage";
 import Homepage from "./pages/Homepage/Homepage";
 import MyBooks from "./pages/MyBooks/MyBooks";
 import BooksContext from "./store/contexts/BooksContext";
+import LoginButton from "./auth0/LoginButton/LoginButton";
+import { useAuth0 } from "@auth0/auth0-react";
+import LogoutButton from "./auth0/LogoutButton/LogoutButton";
 
 function App() {
+  const { isAuthenticated } = useAuth0();
   const {
     page,
     startIndex,
@@ -112,6 +119,12 @@ function App() {
                   <h1 className="logo text"> JustBooks </h1>
                 </div>
               </NavLink>
+
+              <FontAwesomeIcon icon={faUser}>
+                {" "}
+                <LoginButton />{" "}
+              </FontAwesomeIcon>
+              {isAuthenticated && <LogoutButton />}
 
               <NavLink
                 to="/mybooks"
