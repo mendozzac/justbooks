@@ -116,7 +116,7 @@ const FormPage = () => {
         <div className="form-group">
           <label htmlFor="pages">Pages:</label>
           <input
-            type="number"
+            type="text"
             id="pages"
             value={bookData.pages}
             className="form-control"
