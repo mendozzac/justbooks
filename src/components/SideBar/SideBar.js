@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+
 import PropTypes from "prop-types";
 
 const SideBar = ({ actionOnClick }) => {
@@ -13,11 +13,6 @@ const SideBar = ({ actionOnClick }) => {
           aria-expanded="false"
         ></button>
         <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <li className="dropdown-item">
-            <NavLink to="/mybooks" activeClassName="current-section" exact>
-              <div className="mybooks-link">My Books</div>
-            </NavLink>
-          </li>
           <li className="dropdown-item">
             <div className="mybooks-link">Categories</div>
           </li>
