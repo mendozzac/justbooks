@@ -2,8 +2,10 @@ import "./BookCard.scss";
 import Button from "../Button/Button";
 import { useLocation } from "react-router";
 import PropTypes from "prop-types";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const BookCard = ({ book, actionOnClick, addToFav, removeFromFav }) => {
+  const { isAuthenticated } = useAuth0();
   const location = useLocation();
   const buttonText =
     location.pathname === "/mybooks" ? "Remove" : "Add to Favs";
@@ -35,15 +37,17 @@ const BookCard = ({ book, actionOnClick, addToFav, removeFromFav }) => {
             </p>
           </div>
         </div>
-        <Button
-          text={buttonText}
-          className="btn-warning card__fav-button"
-          actionOnClick={
-            location.pathname === "/mybooks"
-              ? () => removeFromFav(book.id)
-              : (event) => addToFav(book, event)
-          }
-        />
+        {isAuthenticated && (
+          <Button
+            text={buttonText}
+            className="btn-warning card__fav-button"
+            actionOnClick={
+              location.pathname === "/mybooks"
+                ? () => removeFromFav(book.id)
+                : (event) => addToFav(book, event)
+            }
+          />
+        )}
       </li>
     </>
   );
