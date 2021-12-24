@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import BookCard from "./BookCard.js";
 import generateBooks from "../../factories/generateBooks";
-import { MemoryRouter } from "react-router-dom";
 import ReactTestRenderer from "react-test-renderer";
+import { MemoryRouter } from "react-router-dom";
 
 describe("Given a BookCard component", () => {
   function mapFrom(bookData) {
